@@ -4,1961 +4,235 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rocket Lab Hero Section</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Squada+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 
     <style>
-        /* --- RESET E GLOBAIS --- */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Inter', sans-serif;
-        }
-
+        /* AJUSTES GERAIS */
         body {
-            background-color: #020210; /* Cor de fundo da próxima seção para continuidade */
-            color: #fff;
-            overflow-x: hidden;
+            font-family: 'Space Grotesk', sans-serif;
+            background-color: #02040a; /* Fundo geral escuro */
+            color: white;
         }
 
-        /* --- CONFIGURAÇÃO DA SECTION HERO --- */
+        /* NAVBAR CUSTOMIZADA */
+        .navbar-custom {
+            background-color: #050a14;
+            padding: 1rem 0;
+            transition: 0.3s;
+        }
+        .navbar-brand {
+            font-family: 'Squada One', cursive;
+            font-size: 1.5rem;
+            color: white !important;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .nav-link {
+            color: #ccc !important;
+            font-weight: 500;
+            margin: 0 10px;
+        }
+        .nav-link:hover, .nav-link.active {
+            color: white !important;
+        }
+        .btn-schedule {
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+        .btn-schedule:hover {
+            background: white;
+            color: #050a14;
+        }
+
+        /* HERO SECTION */
         #inicio {
             position: relative;
-            width: 100%;
-            min-height: 100vh; /* Ocupa a tela inteira */
-            background: 
-                /* Glow azul no topo esquerdo */
-                radial-gradient(circle at 0% 0%, rgba(20, 40, 255, 0.4) 0%, transparent 40%),
-                /* Glow azul/roxo na direita */
-                radial-gradient(circle at 90% 40%, rgba(60, 100, 255, 0.2) 0%, transparent 50%),
-                /* Fundo base */
-                linear-gradient(135deg, #0a0e29 0%, #050515 100%);
-            overflow: hidden;
+            /* Importante: Padding top para compensar a navbar fixa */
+            padding-top: 100px; 
+            min-height: 100vh;
             display: flex;
-            flex-direction: column;
-            padding-bottom: 80px; /* Espaço para a curva */
+            align-items: center;
+            overflow: hidden;
+            background-color: #050a14;
         }
 
-        /* Efeito de Grid (Linhas finas ao fundo) */
-        #inicio::before {
-            content: '';
+        /* Animação */
+        @keyframes floatSpace {
+            0% { transform: scale(1.05); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1.05); }
+        }
+
+        .hero-astronaut-bg {
             position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background-image: 
-                linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-            background-size: 50px 50px;
-            pointer-events: none;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
             z-index: 0;
         }
 
-        /* Partículas / Estrelas (simuladas com CSS) */
-        .star {
+        .hero-overlay {
             position: absolute;
-            background: white;
-            border-radius: 50%;
-            opacity: 0.6;
-            animation: twinkle 3s infinite ease-in-out;
-        }
-        @keyframes twinkle {
-            0%, 100% { opacity: 0.3; transform: scale(1); }
-            50% { opacity: 1; transform: scale(1.2); }
-        }
-
-        /* --- NAVBAR --- */
-        nav {
-            position: relative;
-            z-index: 10;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 5%;
-            height: 90px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 700;
-            font-size: 1.2rem;
-            letter-spacing: 1px;
-        }
-        
-        .logo svg { width: 30px; height: 30px; fill: #ff4d4d; }
-
-        .nav-links {
-            display: flex;
-            gap: 30px;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: #ccc;
-            font-size: 0.9rem;
-            transition: color 0.3s;
-        }
-        .nav-links a:hover, .nav-links a.active { color: #ff4d4d; }
-
-        .btn-schedule {
-            background: linear-gradient(90deg, #4455ff, #2233dd);
-            color: white;
-            padding: 10px 25px;
-            border-radius: 4px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            box-shadow: 0 4px 15px rgba(50, 80, 255, 0.4);
-            transition: transform 0.2s;
-        }
-        .btn-schedule:hover { transform: translateY(-2px); }
-
-        /* --- CONTEÚDO PRINCIPAL (Grid layout) --- */
-        .hero-container {
-            position: relative;
-            z-index: 5;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 60px 5%;
-            flex-grow: 1;
-            align-items: center;
-        }
-
-        /* --- COLUNA DA ESQUERDA (TEXTO) --- */
-        .text-content {
-            max-width: 600px;
-        }
-
-        h1 {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 3rem; /* Tamanho grande conforme imagem */
-            line-height: 1.2;
-            font-weight: 700;
-            margin-bottom: 20px;
-        }
-
-        .highlight-box {
-            background: linear-gradient(90deg, rgba(255, 80, 80, 0.2), rgba(255, 80, 80, 0.1));
-            border: 1px solid rgba(255, 80, 80, 0.5);
-            padding: 0 5px;
-            color: #ff8888;
-            display: inline-block;
-            transform: skewX(-10deg); /* Ligeira inclinação no box */
-        }
-        .highlight-box span {
-            display: inline-block;
-            transform: skewX(10deg); /* Desfaz a inclinação para o texto */
-            text-shadow: 0 0 10px rgba(255, 50, 50, 0.5);
-        }
-
-        .description {
-            color: #d0d0e0;
-            line-height: 1.6;
-            margin-bottom: 20px;
-            font-size: 1rem;
-        }
-
-        .sub-description {
-            color: #d0d0e0;
-            margin-bottom: 40px;
-            font-size: 0.95rem;
-        }
-
-        .cta-button {
-            display: inline-flex;
-            align-items: center;
-            background: linear-gradient(90deg, #2ecc71, #27ae60);
-            color: white;
-            font-weight: 800;
-            text-transform: uppercase;
-            padding: 18px 35px;
-            border-radius: 5px;
-            text-decoration: none;
-            font-size: 1rem;
-            box-shadow: 0 0 20px rgba(46, 204, 113, 0.6);
-            transition: all 0.3s ease;
-            letter-spacing: 0.5px;
-        }
-
-        .cta-button:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 30px rgba(46, 204, 113, 0.8);
-        }
-
-        .cta-button span { margin-left: 10px; font-size: 1.2rem; }
-
-        /* --- COLUNA DA DIREITA (VISUAL/ASTRONAUTA) --- */
-        .visual-content {
-            position: relative;
-            height: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        /* Container do Astronauta */
-        .astronaut-wrapper {
-            position: relative;
-            width: 500px;
-            height: 500px;
-            animation: float 6s ease-in-out infinite;
-        }
-
-        /* Placeholder para a imagem */
-        .image-placeholder {
-            width: 100%;
-            height: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            /* Esta borda é apenas para você saber onde a imagem fica, remova se quiser */
-            /* border: 1px dashed rgba(255,255,255,0.2); */
-        }
-        
-        .image-placeholder img {
-            max-width: 120%; /* Um pouco maior para sair do container como na ref */
-            max-height: 120%;
-            object-fit: contain;
-            filter: drop-shadow(0 20px 30px rgba(0,0,0,0.5));
-        }
-
-        /* Cartões Flutuantes (Ícones) */
-        .floating-card {
-            position: absolute;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 15px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
-            animation: float 5s ease-in-out infinite;
-        }
-
-        /* Posições dos ícones baseadas na imagem */
-        .card-analytics { top: 20%; right: 10%; width: 60px; height: 60px; animation-delay: 1s; }
-        .card-ads { top: 40%; left: 0%; width: 100px; height: 100px; animation-delay: 0.5s; background: rgba(255,255,255,0.9); } /* O ícone do ads é maior e branco */
-        .card-meta { top: 25%; left: 15%; width: 50px; height: 50px; animation-delay: 2s; border-radius: 12px; }
-
-        /* Ícones simulados com CSS/SVG */
-        .icon-ads { width: 60px; height: 60px; } /* Google Ads Logo Placeholder */
-        .icon-analytics { width: 30px; height: 30px; fill: #f1c40f; }
-        .icon-meta { width: 30px; height: 30px; fill: #1877f2; }
-
-        /* Stats (Texto flutuante) */
-        .stat-text {
-            position: absolute;
-            color: #fff;
-            font-size: 0.8rem;
-            font-weight: 600;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.8);
-            white-space: nowrap;
-        }
-
-        .stat-1 { bottom: 10%; left: -10%; text-align: right; }
-        .stat-2 { bottom: 10%; right: 10%; }
-        .stat-3 { bottom: 30%; right: -5%; }
-
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-15px); }
-            100% { transform: translateY(0px); }
-        }
-
-        /* --- DIVISOR CURVO INFERIOR --- */
-        .bottom-divider {
-            position: absolute;
-            bottom: -1px; /* Correção de pixel */
+            top: 0;
             left: 0;
             width: 100%;
-            height: 120px;
-            z-index: 20;
-            overflow: hidden;
-        }
-
-        .curve-svg {
-            position: absolute;
-            bottom: 0;
-            width: 100%;
             height: 100%;
-            fill: #020210; /* Mesma cor do body/próxima seção */
-        }
-        .marketing-problem {
-            background: radial-gradient(circle at 50% 0%, #0a0e29 0%, #020210 60%);
-            padding: 120px 20px;
-            text-align: center;
-            color: white;
-            position: relative;
-        }
-        
-        .marketing-content {
-            max-width: 900px;
-            margin: 0 auto;
-        }
-        
-        .marketing-problem h2 {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 1.8rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            margin-bottom: 25px;
-        }
-        
-        .marketing-problem h2 span {
-            color: #ff4d4d;
-            border: 1px solid #ff4d4d;
-            padding: 4px 8px;
-            margin: 0 4px;
-            display: inline-block;
-        }
-        
-        .marketing-problem p {
-            color: #cfcfe6;
-            font-size: 1rem;
-            line-height: 1.6;
-            margin-bottom: 40px;
-        }
-        
-        .cta-green {
-            display: inline-block;
-            background: linear-gradient(90deg, #2ecc71, #27ae60);
-            color: #fff;
-            padding: 16px 32px;
-            border-radius: 6px;
-            text-decoration: none;
-            font-weight: 800;
-            text-transform: uppercase;
-            font-size: 0.95rem;
-            box-shadow: 0 0 20px rgba(46, 204, 113, 0.5);
-            transition: transform .2s ease, box-shadow .2s ease;
-        }
-        
-        .cta-green:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 30px rgba(46, 204, 113, 0.8);
-        }
-        
-        /* FAIXA VERMELHA */
-        .brand-strip {
-            width: 100%;
-            background-color: #ff5c5c;
-            overflow: hidden;
-        }
-        
-        .brand-strip img {
-            width: 100%;
-            display: block;
-        }
-        
-
-        /* Botão Scroll Down (Círculo com seta) */
-        .scroll-down-btn {
-            position: absolute;
-            bottom: 35px; /* Ajuste para alinhar com o "buraco" da curva */
-            left: 50%;
-            transform: translateX(-50%);
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-            transition: all 0.3s;
-            z-index: 30;
-        }
-        .scroll-down-btn:hover { border-color: #fff; }
-        .scroll-down-btn svg { width: 24px; height: 24px; stroke: white; stroke-width: 2; fill: none; }
-
-        /* --- RESPONSIVIDADE --- */
-        @media (max-width: 992px) {
-            h1 { font-size: 2.2rem; }
-            .hero-container { grid-template-columns: 1fr; text-align: center; padding-top: 20px; }
-            .text-content { margin: 0 auto; }
-            .nav-links { display: none; /* Menu hambúrguer não implementado para simplificar, ocultando links desktop */ }
-            .visual-content { margin-top: 50px; height: 400px; }
-            .astronaut-wrapper { width: 100%; height: 100%; }
-            .card-ads { left: 10%; }
-            .stat-1, .stat-2, .stat-3 { font-size: 0.7rem; }
-        }
-
-        @media (max-width: 480px) {
-            h1 { font-size: 1.8rem; }
-            .btn-schedule { display: none; } /* Ocultar CTA header no mobile se necessário */
-            .logo { font-size: 1rem; }
-            .cta-button { width: 100%; justify-content: center; padding: 15px; font-size: 0.9rem; }
-            .stat-text { display: none; /* Ocultar stats no mobile para limpar visual */ }
-        }
-
-        /* --- SEÇÃO DE CONTATO (IMAGE_2.PNG) --- */
-        #contato {
-            position: relative;
-            padding: 100px 5%;
-            /* Gradiente de fundo Roxo/Azul Escuro */
-            background: linear-gradient(135deg, #21153D 0%, #100B2E 100%);
-            overflow: hidden;
-            color: #fff;
-        }
-
-        /* Overlay de Grade no Fundo */
-        .grid-overlay {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background-image: 
-                linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
-            background-size: 60px 60px;
-            pointer-events: none;
+            background: linear-gradient(90deg, #050a14 0%, rgba(5, 10, 20, 0.9) 35%, rgba(5, 10, 20, 0) 100%);
             z-index: 1;
         }
 
-        /* Estilo para os Foguetes Desfocados (se as imagens forem adicionadas) */
-        .rocket-blur {
-            position: absolute;
-            z-index: 2;
-            filter: blur(5px);
-            pointer-events: none;
-        }
-        .rocket-blur.left { top: 20%; left: -5%; width: 250px; transform: rotate(15deg); }
-        .rocket-blur.right { top: 30%; right: -5%; width: 250px; transform: rotate(-15deg); }
-
-        .contact-container {
+        /* Conteúdo Hero */
+        .hero-content-wrapper {
             position: relative;
-            z-index: 5;
-            max-width: 1100px;
-            margin: 0 auto;
+            z-index: 2;
+            width: 100%;
         }
 
-        /* Header do Contato (Título e Texto lado a lado) */
-        .contact-header {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            margin-bottom: 60px;
-            align-items: center;
-        }
-
-        .contact-title h2 {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 2.5rem;
-            font-weight: 800;
+        h1 {
+            font-family: 'Squada One', cursive;
+            font-size: 3.5rem;
             line-height: 1.1;
-            text-transform: uppercase;
-        }
-        .highlight-orange { color: #FF5733; } /* Laranja de destaque */
-
-        .contact-text p {
-            font-size: 1.1rem;
-            line-height: 1.6;
-            color: #D0D0D0; /* Cinza claro para o texto */
-        }
-        .contact-text strong { color: #fff; font-weight: 700; }
-
-        /* Card do Formulário */
-        .form-card {
-            background-color: #FFFFFF;
-            border-radius: 20px;
-            padding: 50px;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
-            color: #333;
+            margin-bottom: 1.5rem;
         }
 
-        .form-group {
-            margin-bottom: 25px;
+        .highlight-box {
+            background: rgba(255, 96, 90, 0.2);
+            color: #FF605A;
+            padding: 0 10px;
+            border-radius: 4px;
+            display: inline-block;
         }
 
-        .form-group label {
-            display: block;
+        .cta-button {
+            display: inline-block;
+            background: #25D366; /* Verde destaque */
+            color: #000;
             font-weight: 700;
-            margin-bottom: 10px;
-            color: #2C204D; /* Roxo escuro para os labels */
-            font-size: 1rem;
-        }
-
-        .form-group input {
-            width: 100%;
-            padding: 18px 20px;
-            background-color: #2C204D; /* Fundo roxo escuro para os inputs */
-            border: none;
-            border-radius: 10px;
-            color: #fff;
-            font-size: 1rem;
-            font-family: 'Inter', sans-serif;
-        }
-        .form-group input::placeholder { color: rgba(255,255,255,0.6); }
-        .form-group input:focus { outline: 2px solid #FF5733; } /* Foco laranja */
-
-        /* Botão de Enviar */
-        .btn-submit {
-            width: 100%;
-            padding: 20px;
-            background: linear-gradient(90deg, #2ECC71, #27AE60); /* Gradiente Verde */
-            border: none;
-            border-radius: 10px;
-            color: white;
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 800;
-            font-size: 1.1rem;
-            text-transform: uppercase;
-            cursor: pointer;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 10px;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-        .btn-submit:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(46, 204, 113, 0.5);
-        }
-        .btn-submit svg { fill: white; width: 20px; height: 20px; }
-
-        .legal-text {
-            text-align: center;
-            font-size: 0.8rem;
-            color: #888;
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
             margin-top: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
-        .rocket-blur {
-            position: absolute;
-            z-index: 2;
-            filter: blur(5px);
-            pointer-events: none;
+
+        /* MOBILE (Sobrescreve Bootstrap quando necessário) */
+        @media (max-width: 991px) {
+            .hero-overlay {
+                background: rgba(5, 10, 20, 0.85); /* Escurece mais no mobile */
+            }
+            #inicio {
+                text-align: center;
+                justify-content: center;
+            }
+            .hero-content-wrapper {
+                text-align: center !important; /* Força centro no mobile */
+            }
+            /* Centraliza o botão no mobile */
+            .btn-container-hero {
+                display: flex;
+                justify-content: center;
+            }
         }
-        
-        .rocket-blur.left {
-            top: 20%;
-            left: -5%;
-            width: 250px;
-            transform: rotate(15deg);
-        }
-        
-        .rocket-blur.right {
-            top: 30%;
-            right: -5%;
-            width: 250px;
-            transform: rotate(-15deg);
-        }
-        @keyframes floatRocket {
-            0% { transform: translateY(0) rotate(15deg); }
-            50% { transform: translateY(-15px) rotate(15deg); }
-            100% { transform: translateY(0) rotate(15deg); }
-        }
-        
-        .rocket-blur.left {
-            animation: floatRocket 6s ease-in-out infinite;
-        }
-        
-        .rocket-blur.right {
-            animation: floatRocket 6s ease-in-out infinite;
-        }
-                
-        /* --- CSS ESPECÍFICO PARA A SEÇÃO METODOLOGIA --- */
-    #metodologia {
-        position: relative;
-        width: 100%;
-        background: linear-gradient(180deg, #100B2E 0%, #020210 100%);
-        padding: 100px 5%;
-        overflow: hidden;
-        color: #fff;
-    }
-
-    /* Grid Background específico desta seção (para garantir visual) */
-    .grid-bg {
-        position: absolute;
-        top: 0; left: 0; width: 100%; height: 100%;
-        background-image: 
-            linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-        background-size: 50px 50px;
-        pointer-events: none;
-        z-index: 1;
-    }
-
-    /* Glows de fundo para dar o tom azulado/roxo da imagem */
-    .glow-spot {
-        position: absolute;
-        width: 600px;
-        height: 600px;
-        background: radial-gradient(circle, rgba(60, 40, 255, 0.15) 0%, transparent 70%);
-        border-radius: 50%;
-        z-index: 0;
-        pointer-events: none;
-    }
-    .glow-1 { top: -200px; left: -200px; }
-    .glow-2 { bottom: -200px; right: -200px; }
-
-    .metodologia-container {
-        position: relative;
-        z-index: 5;
-        max-width: 1200px;
-        margin: 0 auto;
-    }
-
-    /* --- PARTE 1: ESTRATÉGIA E PILARES --- */
-    .strategy-block {
-        display: flex;
-        justify-content: space-between;
-        gap: 50px;
-        margin-bottom: 60px;
-    }
-
-    .strategy-text {
-        flex: 1;
-        max-width: 350px;
-    }
-
-    .strategy-text h2 {
-        font-family: 'Montserrat', sans-serif;
-        font-weight: 800;
-        font-size: 2.2rem;
-        line-height: 1.1;
-        text-transform: uppercase;
-        margin-bottom: 15px;
-    }
-
-    .strategy-subtitle {
-        display: block;
-        font-size: 0.9rem;
-        text-transform: uppercase;
-        margin-bottom: 20px;
-        color: #ccc;
-    }
-
-    .strategy-subtitle span {
-        color: #ff5c5c; /* Coral/Laranja da marca */
-        font-weight: 700;
-    }
-
-    .strategy-text p {
-        font-size: 1rem;
-        line-height: 1.5;
-        color: #d0d0e0;
-    }
-
-    /* Cards dos Pilares */
-    .pillars-grid {
-        flex: 2;
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 20px;
-    }
-
-    .pillar-card {
-        background-color: #050515;
-        border: 2px solid #ff5c5c; /* Borda Laranja */
-        border-radius: 20px;
-        padding: 30px 15px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        transition: transform 0.3s;
-    }
-
-    .pillar-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 10px 20px rgba(255, 92, 92, 0.2);
-    }
-
-    .pillar-icon {
-        width: 60px;
-        height: 60px;
-        margin-bottom: 20px;
-        fill: #ff5c5c;
-    }
-
-    .pillar-card p {
-        font-size: 0.85rem;
-        line-height: 1.4;
-        color: #fff;
-    }
-
-    .pillar-card strong {
-        display: block;
-        margin-bottom: 5px;
-        color: #fff;
-        font-weight: 700;
-    }
-
-    /* --- CTA CENTRAL --- */
-    .cta-wrapper {
-        text-align: center;
-        margin: 60px 0;
-    }
-
-    .cta-wide {
-        display: inline-flex;
-        align-items: center;
-        background: linear-gradient(90deg, #2ecc71, #27ae60); /* Verde */
-        color: #fff;
-        padding: 18px 40px;
-        border-radius: 6px;
-        text-decoration: none;
-        font-family: 'Montserrat', sans-serif;
-        font-weight: 800;
-        text-transform: uppercase;
-        font-size: 0.9rem;
-        box-shadow: 0 0 20px rgba(46, 204, 113, 0.4);
-        transition: transform 0.2s;
-    }
-    
-    .cta-wide:hover {
-        transform: scale(1.02);
-    }
-    
-    .cta-wide span { margin-left: 10px; }
-
-    /* --- PARTE 2: RESULTADOS --- */
-    .results-header {
-        text-align: center;
-        margin-bottom: 50px;
-    }
-
-    .results-header h3 {
-        font-family: 'Montserrat', sans-serif;
-        font-weight: 800;
-        font-size: 2.5rem;
-        line-height: 1.2;
-        text-transform: uppercase;
-        margin-bottom: 15px;
-    }
-
-    .results-header h3 span {
-        color: #ff5c5c; /* Laranja */
-    }
-
-    .results-header p {
-        color: #ccc;
-        font-size: 1rem;
-        max-width: 700px;
-        margin: 0 auto;
-    }
-
-    /* --- PARTE 3: DEPOIMENTOS --- */
-    .testimonials-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 30px;
-        margin-bottom: 60px;
-    }
-
-    .testimonial-card {
-        background-color: #050515;
-        border: 2px solid #ff5c5c; /* Borda Laranja */
-        border-radius: 20px;
-        padding: 30px;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        min-height: 250px;
-    }
-
-    .quote-text {
-        font-size: 1.1rem;
-        line-height: 1.5;
-        font-weight: 500;
-        margin-bottom: 20px;
-    }
-    
-    .quote-text strong {
-        color: #fff;
-        font-weight: 700;
-    }
-
-    .author-block {
-        display: flex;
-        align-items: center;
-        gap: 15px;
-    }
-
-    .author-avatar {
-        width: 50px;
-        height: 50px;
-        background-color: #ff5c5c;
-        border-radius: 50%;
-    }
-
-    .author-info h4 {
-        font-size: 0.9rem;
-        font-weight: 700;
-        margin-bottom: 2px;
-    }
-
-    .author-info span {
-        font-size: 0.8rem;
-        color: #ccc;
-    }
-    /* --- CSS ESPECÍFICO PARA A SEÇÃO CONQUISTAS --- */
-    #conquistas {
-        position: relative;
-        width: 100%;
-        /* Gradiente de fundo profundo azul/roxo */
-        background: linear-gradient(135deg, #0a0e29 0%, #020210 100%);
-        padding: 120px 5%;
-        overflow: hidden;
-        color: #fff;
-    }
-
-    /* Reutilizando o grid overlay se já existir globalmente, 
-       caso contrário, definindo aqui para garantir o visual */
-    .grid-overlay-conquistas {
-        position: absolute;
-        top: 0; left: 0; width: 100%; height: 100%;
-        background-image: 
-            linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-        background-size: 60px 60px;
-        pointer-events: none;
-        z-index: 1;
-    }
-
-    /* Foguete de fundo */
-    .bg-rocket-large {
-        position: absolute;
-        top: 50%;
-        left: -10%;
-        transform: translateY(-50%) rotate(15deg);
-        width: 600px;
-        opacity: 0.8;
-        pointer-events: none;
-        z-index: 2;
-        filter: drop-shadow(0 0 30px rgba(50, 100, 255, 0.3));
-    }
-
-    /* Elementos desfocados de fundo (Adwords/Analytics logos) para ambientação */
-    .blurred-bg-icon {
-        position: absolute;
-        pointer-events: none;
-        z-index: 2;
-        filter: blur(8px);
-        opacity: 0.5;
-    }
-    .bg-icon-1 { bottom: 10%; left: 15%; width: 100px; transform: rotate(-20deg); }
-    .bg-icon-2 { bottom: 20%; right: 5%; width: 120px; transform: rotate(10deg); }
-
-
-    .conquistas-container {
-        position: relative;
-        z-index: 10;
-        max-width: 1100px;
-        margin: 0 auto;
-        display: grid;
-        grid-template-columns: 1fr 1.2fr; /* Coluna da direita ligeiramente mais larga */
-        gap: 60px;
-        align-items: center;
-    }
-
-    /* Coluna de Texto (Esquerda) */
-    .conquistas-text {
-        max-width: 400px;
-    }
-
-    .conquistas-text h2 {
-        font-family: 'Montserrat', sans-serif;
-        font-weight: 800;
-        font-size: 2.5rem;
-        line-height: 1.1;
-        text-transform: uppercase;
-        margin-bottom: 20px;
-    }
-
-    .highlight-orange {
-        color: #ff5c5c; /* Coral/Laranja da marca */
-    }
-
-    .conquistas-text p {
-        font-family: 'Inter', sans-serif;
-        font-size: 1rem;
-        line-height: 1.5;
-        color: #d0d0e0;
-    }
-
-    /* Coluna de Cards (Direita) */
-    .conquistas-cards-stack {
-        display: flex;
-        flex-direction: column;
-        gap: 25px;
-    }
-
-    /* Estilo do Card Individual */
-    .achievement-card {
-        /* Gradiente Azul Brilhante do Card */
-        background: linear-gradient(90deg, rgba(30, 40, 180, 0.6) 0%, rgba(20, 30, 120, 0.7) 100%);
-        backdrop-filter: blur(10px);
-        border: 2px solid rgba(80, 120, 255, 0.6); /* Borda azul brilhante */
-        border-radius: 40px; /* Bordas bem arredondadas */
-        padding: 25px 35px;
-        display: flex;
-        align-items: center;
-        gap: 25px;
-        box-shadow: 
-            0 10px 30px rgba(0, 0, 0, 0.2), /* Sombra base */
-            0 0 20px rgba(60, 100, 255, 0.3), /* Glow externo */
-            inset 0 0 15px rgba(60, 100, 255, 0.1); /* Glow interno sutil */
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .achievement-card:hover {
-        transform: translateX(10px);
-        box-shadow: 
-            0 15px 35px rgba(0, 0, 0, 0.3),
-            0 0 30px rgba(60, 100, 255, 0.5),
-            inset 0 0 20px rgba(60, 100, 255, 0.2);
-        border-color: rgba(100, 150, 255, 0.8);
-    }
-
-    .card-icon-container {
-        flex-shrink: 0;
-        width: 60px;
-        height: 60px;
-        background-color: rgba(0, 0, 30, 0.5); /* Círculo escuro atrás do ícone */
-        border-radius: 50%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .card-icon-svg {
-        width: 32px;
-        height: 32px;
-        fill: #0a0e29; /* Ícone escuro como na referência */
-    }
-
-    .card-content-text h3 {
-        font-family: 'Montserrat', sans-serif;
-        font-weight: 800;
-        font-size: 1.1rem;
-        margin-bottom: 4px;
-    }
-
-    .card-content-text p {
-        font-family: 'Inter', sans-serif;
-        font-size: 0.95rem;
-        color: #e0e0ff;
-        font-weight: 400;
-        margin: 0;
-    }
-
-    /* --- RESPONSIVIDADE --- */
-    @media (max-width: 992px) {
-        .conquistas-container {
-            grid-template-columns: 1fr;
-            text-align: center;
-        }
-        .conquistas-text {
-            max-width: 100%;
-            margin-bottom: 40px;
-        }
-        .bg-rocket-large {
-            width: 400px;
-            left: -15%;
-            top: 20%;
-        }
-        .achievement-card {
-            padding: 20px;
-            border-radius: 30px;
-        }
-    }
-    /* --- CSS ESPECÍFICO PARA A SEÇÃO GARANTIA --- */
-    #garantia {
-        position: relative;
-        width: 100%;
-        background: linear-gradient(180deg, #020210 0%, #100B2E 100%);
-        padding: 120px 5%;
-        overflow: hidden;
-        color: #fff;
-    }
-
-    /* Grid Overlay */
-    .grid-overlay-garantia {
-        position: absolute;
-        top: 0; left: 0; width: 100%; height: 100%;
-        background-image: 
-            linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-        background-size: 60px 60px;
-        pointer-events: none;
-        z-index: 1;
-    }
-
-    .garantia-container {
-        position: relative;
-        z-index: 10;
-        max-width: 1100px;
-        margin: 0 auto;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-    }
-
-    /* Imagem Circular em Rotação (Fundo) */
-    .rotating-seal {
-        position: absolute;
-        top: 50%;
-        left: 0;
-        transform: translateY(-50%);
-        width: 600px; /* Tamanho grande para ficar ao fundo */
-        height: auto;
-        opacity: 0.8;
-        z-index: 2;
-        animation: rotateSeal 30s linear infinite;
-    }
-
-    @keyframes rotateSeal {
-        from { transform: translateY(-50%) rotate(0deg); }
-        to { transform: translateY(-50%) rotate(360deg); }
-    }
-
-    /* Bloco de Texto (Direita) */
-    .garantia-text-block {
-        max-width: 500px;
-        margin-left: auto; /* Empurra para a direita */
-        position: relative;
-        z-index: 5;
-    }
-
-    .garantia-text-block h2 {
-        font-family: 'Montserrat', sans-serif;
-        font-weight: 800;
-        font-size: 2.5rem;
-        line-height: 1.1;
-        text-transform: uppercase;
-        margin-bottom: 20px;
-    }
-
-    .highlight-orange {
-        color: #ff5c5c; /* Coral/Laranja da marca */
-    }
-
-    .garantia-text-block p {
-        font-family: 'Inter', sans-serif;
-        font-size: 1rem;
-        line-height: 1.5;
-        color: #d0d0e0;
-        margin-bottom: 20px;
-    }
-    
-    .small-text {
-        font-size: 0.85rem;
-        line-height: 1.4;
-        color: #a0a0c0;
-    }
-
-    .cta-garantia {
-        display: inline-flex;
-        align-items: center;
-        background: linear-gradient(90deg, #2ecc71, #27ae60); /* Verde */
-        color: #fff;
-        padding: 16px 32px;
-        border-radius: 6px;
-        text-decoration: none;
-        font-family: 'Montserrat', sans-serif;
-        font-weight: 800;
-        text-transform: uppercase;
-        font-size: 0.9rem;
-        box-shadow: 0 0 20px rgba(46, 204, 113, 0.4);
-        transition: transform 0.2s, box-shadow 0.2s;
-        margin-top: 10px;
-    }
-
-    .cta-garantia:hover {
-        transform: scale(1.05);
-        box-shadow: 0 0 30px rgba(46, 204, 113, 0.6);
-    }
-
-    .cta-garantia span { margin-left: 8px; font-size: 1.1rem; }
-
-    /* --- RESPONSIVIDADE --- */
-    @media (max-width: 992px) {
-        .garantia-container {
-            flex-direction: column-reverse; /* Texto acima, imagem abaixo */
-            text-align: center;
-        }
-        .garantia-text-block {
-            margin: 0 auto 40px;
-        }
-        .rotating-seal {
-            position: relative;
-            top: auto;
-            left: auto;
-            transform: none;
-            width: 400px;
-            margin: 0 auto;
-        }
-        @keyframes rotateSeal {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-    }
-    /* --- CSS ESPECÍFICO PARA A SEÇÃO 'POR QUE ROCKET LAB' --- */
-    #escolha-rocket {
-        position: relative;
-        width: 100%;
-        /* Gradiente de fundo profundo azul */
-        background: linear-gradient(180deg, #020210 0%, #0a0e29 100%);
-        padding: 100px 5%;
-        overflow: hidden;
-        color: #fff;
-        text-align: center;
-    }
-
-    /* Grid/Linhas Verticais de Fundo */
-    .vertical-lines-bg {
-        position: absolute;
-        top: 0; left: 0; width: 100%; height: 100%;
-        background-image: repeating-linear-gradient(
-            90deg,
-            rgba(255, 255, 255, 0.03) 0px,
-            rgba(255, 255, 255, 0.03) 1px,
-            transparent 1px,
-            transparent 100px
-        );
-        pointer-events: none;
-        z-index: 1;
-    }
-
-    /* Glow central azulado para destacar o texto */
-    .center-glow {
-        position: absolute;
-        top: 20%;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 80%;
-        height: 60%;
-        background: radial-gradient(circle, rgba(40, 60, 180, 0.15) 0%, transparent 70%);
-        z-index: 0;
-        pointer-events: none;
-    }
-
-    .escolha-container {
-        position: relative;
-        z-index: 10;
-        max-width: 1200px;
-        margin: 0 auto;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-
-    /* --- HEADER DA SEÇÃO --- */
-    .top-pill-cta {
-        display: inline-block;
-        background: linear-gradient(90deg, #2ecc71, #27ae60);
-        color: #fff;
-        padding: 12px 25px;
-        border-radius: 4px;
-        font-family: 'Montserrat', sans-serif;
-        font-weight: 700;
-        font-size: 0.8rem;
-        text-transform: uppercase;
-        text-decoration: none;
-        margin-bottom: 30px;
-        box-shadow: 0 0 15px rgba(46, 204, 113, 0.3);
-        transition: transform 0.2s;
-    }
-    .top-pill-cta:hover { transform: scale(1.05); }
-
-    .escolha-header h2 {
-        font-family: 'Montserrat', sans-serif;
-        font-weight: 800;
-        font-size: 2.5rem;
-        line-height: 1.1;
-        text-transform: uppercase;
-        margin-bottom: 20px;
-        max-width: 800px;
-    }
-
-    .highlight-coral { color: #ff5c5c; }
-
-    .escolha-header p {
-        font-family: 'Inter', sans-serif;
-        font-size: 1.1rem;
-        color: #d0d0e0;
-        max-width: 600px;
-        margin: 0 auto 60px auto;
-        line-height: 1.5;
-    }
-
-    /* --- GRID DE CARDS (LAYOUT 3 CIMA, 2 BAIXO) --- */
-    .reasons-grid {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 30px;
-        width: 100%;
-        margin-bottom: 60px;
-    }
-
-    .reason-card {
-        /* Estilo Pílula */
-        background: linear-gradient(135deg, rgba(30, 40, 100, 0.6) 0%, rgba(10, 15, 50, 0.8) 100%);
-        backdrop-filter: blur(10px);
-        border: 1px solid rgba(100, 120, 255, 0.5); /* Borda azul clara */
-        border-radius: 50px; /* Borda bem arredondada */
-        padding: 25px 40px;
-        
-        /* Flex properties para layout */
-        flex: 1 1 300px; /* Cresce, encolhe, base 300px */
-        max-width: 380px;
-        min-height: 100px;
-        
-        display: flex;
-        align-items: center;
-        gap: 15px;
-        text-align: left;
-        
-        box-shadow: 
-            0 10px 30px rgba(0,0,0,0.3),
-            inset 0 0 20px rgba(40, 60, 200, 0.1);
-        transition: transform 0.3s, box-shadow 0.3s;
-    }
-
-    .reason-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 15px 40px rgba(0,0,0,0.4), inset 0 0 20px rgba(40, 60, 200, 0.2);
-        border-color: #fff;
-    }
-
-    /* Ícone de Checkbox Verde */
-    .check-icon {
-        flex-shrink: 0;
-        width: 24px;
-        height: 24px;
-        background-color: #2ecc71; /* Fundo verde do quadrado */
-        border-radius: 4px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-    
-    .check-icon svg {
-        width: 16px;
-        height: 16px;
-        fill: #fff;
-        stroke: #fff;
-        stroke-width: 1;
-    }
-
-    .reason-card p {
-        font-family: 'Inter', sans-serif;
-        font-size: 0.95rem;
-        line-height: 1.3;
-        font-weight: 500;
-        color: #fff;
-        margin: 0;
-    }
-    
-    .reason-card p strong {
-        font-weight: 700;
-    }
-
-    /* --- CTA INFERIOR --- */
-    .bottom-cta-btn {
-        display: inline-flex;
-        align-items: center;
-        background: linear-gradient(90deg, #2ecc71, #27ae60);
-        color: #fff;
-        padding: 18px 40px;
-        border-radius: 6px;
-        font-family: 'Montserrat', sans-serif;
-        font-weight: 800;
-        font-size: 0.9rem;
-        text-transform: uppercase;
-        text-decoration: none;
-        box-shadow: 0 0 20px rgba(46, 204, 113, 0.5);
-        transition: transform 0.2s, box-shadow 0.2s;
-    }
-
-    .bottom-cta-btn:hover {
-        transform: scale(1.05);
-        box-shadow: 0 0 30px rgba(46, 204, 113, 0.8);
-    }
-    
-    .bottom-cta-btn span { margin-left: 10px; }
-
-    /* --- RESPONSIVIDADE --- */
-    @media (max-width: 992px) {
-        .reasons-grid {
-            gap: 20px;
-        }
-        .reason-card {
-            max-width: 100%; /* No tablet/mobile ocupa a largura disponivel */
-            border-radius: 30px; /* Reduz um pouco o arredondamento */
-        }
-    }
-
-    @media (max-width: 768px) {
-        .escolha-header h2 { font-size: 1.8rem; }
-        .reason-card { flex-direction: row; padding: 20px; } /* Mantém icone ao lado */
-    }
-    @media (max-width: 576px) {
-        #garantia { padding: 80px 5%; }
-        .garantia-text-block h2 { font-size: 1.8rem; }
-        .rotating-seal { width: 300px; }
-        .cta-garantia { width: 100%; justify-content: center; padding: 15px; font-size: 0.8rem; }
-    }
-
-    @media (max-width: 576px) {
-        #conquistas { padding: 80px 5%; }
-        .conquistas-text h2 { font-size: 2rem; }
-        .bg-rocket-large { opacity: 0.4; width: 300px; top: 10%; }
-        .achievement-card {
-            flex-direction: column;
-            text-align: center;
-            gap: 15px;
-        }
-        .achievement-card:hover { transform: translateY(-5px); }
-    }
-    /* --- RESPONSIVIDADE DA SEÇÃO --- */
-    @media (max-width: 992px) {
-        .strategy-block { flex-direction: column; text-align: center; }
-        .strategy-text { max-width: 100%; margin-bottom: 30px; }
-        .pillars-grid { grid-template-columns: repeat(2, 1fr); }
-        
-        .testimonials-grid { grid-template-columns: 1fr; }
-        .results-header h3 { font-size: 1.8rem; }
-    }
-
-    @media (max-width: 576px) {
-        .pillars-grid { grid-template-columns: 1fr; }
-        .cta-wide { width: 100%; justify-content: center; padding: 15px; font-size: 0.8rem; }
-    }
-        /* Responsividade para a Seção de Contato */
-        @media (max-width: 992px) {
-            .contact-header { grid-template-columns: 1fr; text-align: center; gap: 30px; }
-            .contact-title h2 { font-size: 2rem; }
-            .form-card { padding: 30px; }
-            .rocket-blur { display: none; } /* Oculta os foguetes no mobile para limpar a tela */
-        }
-        /* --- CSS ESPECÍFICO PARA A SEÇÃO 'CONDIÇÕES ESPECIAIS' --- */
-    #condicoes-especiais {
-        position: relative;
-        width: 100%;
-        /* Mesmo gradiente da seção anterior para continuidade visual */
-        background: linear-gradient(180deg, #0a0e29 0%, #020210 100%);
-        padding: 100px 5%;
-        overflow: hidden;
-        color: #fff;
-        text-align: center;
-    }
-
-    /* Reutilizando o Grid/Overlay de fundo */
-    .grid-overlay-condicoes {
-        position: absolute;
-        top: 0; left: 0; width: 100%; height: 100%;
-        background-image: repeating-linear-gradient(
-            90deg,
-            rgba(255, 255, 255, 0.03) 0px,
-            rgba(255, 255, 255, 0.03) 1px,
-            transparent 1px,
-            transparent 100px
-        );
-        pointer-events: none;
-        z-index: 1;
-    }
-
-    .condicoes-container {
-        position: relative;
-        z-index: 10;
-        max-width: 1200px;
-        margin: 0 auto;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-
-    /* --- TÍTULO --- */
-    .condicoes-header h2 {
-        font-family: 'Montserrat', sans-serif;
-        font-weight: 800;
-        font-size: 2.5rem;
-        line-height: 1.1;
-        text-transform: uppercase;
-        margin-bottom: 50px;
-        max-width: 900px;
-    }
-
-    /* Mantendo a consistência do "Rocket Lab" escuro/destaque da imagem, 
-       mas usando uma cor legível (Coral ou Branco Opaco) para acessibilidade na web */
-    .text-muted-brand {
-        color: rgba(255, 255, 255, 0.2); /* Opção estilo marca d'água (fiel à imagem) */
-        /* OU use a classe abaixo para legibilidade, conforme preferir: */
-        /* color: #ff5c5c; */ 
-    }
-    
-    /* Optei por manter legível mas diferenciado, como um cinza escuro azulado */
-    .brand-dark {
-        color: #3b426a; 
-        text-shadow: 0 1px 1px rgba(255,255,255,0.1);
-    }
-
-    /* --- GRID DE CONDIÇÕES (LINHA ÚNICA) --- */
-    .conditions-grid {
-        display: flex;
-        justify-content: center;
-        gap: 30px;
-        width: 100%;
-        margin-bottom: 50px;
-        flex-wrap: wrap;
-    }
-
-    /* Reutilizando o estilo visual do card, mas ajustando dimensões */
-    .condition-card {
-        background: linear-gradient(135deg, rgba(30, 40, 100, 0.6) 0%, rgba(10, 15, 50, 0.8) 100%);
-        backdrop-filter: blur(10px);
-        border: 1px solid rgba(100, 120, 255, 0.5);
-        border-radius: 50px; /* Pílula completa */
-        padding: 30px 40px;
-        
-        /* Flex para alinhar ícone e texto */
-        display: flex;
-        align-items: center;
-        gap: 20px;
-        text-align: left;
-        
-        flex: 1; /* Distribui espaço igualmente */
-        min-width: 300px; /* Largura mínima antes de quebrar */
-        
-        box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-        transition: transform 0.3s;
-    }
-
-    .condition-card:hover {
-        transform: translateY(-5px);
-        border-color: #fff;
-    }
-
-    /* Reutilizando a classe do ícone verde */
-    .check-icon-box {
-        flex-shrink: 0;
-        width: 28px;
-        height: 28px;
-        background-color: #2ecc71;
-        border-radius: 6px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .check-icon-box svg {
-        width: 18px;
-        height: 18px;
-        fill: #fff;
-        stroke: #fff;
-        stroke-width: 1;
-    }
-
-    .condition-card p {
-        font-family: 'Inter', sans-serif;
-        font-size: 1rem;
-        line-height: 1.4;
-        color: #fff;
-        font-weight: 500;
-        margin: 0;
-    }
-
-    /* --- BOTÃO GRANDE (LARGURA TOTAL/LARGA) --- */
-    .btn-large-green {
-        display: inline-flex;
-        justify-content: center;
-        align-items: center;
-        background: linear-gradient(90deg, #2ecc71, #27ae60);
-        color: #fff;
-        padding: 20px 60px; /* Mais largo */
-        border-radius: 8px;
-        font-family: 'Montserrat', sans-serif;
-        font-weight: 800;
-        font-size: 0.95rem;
-        text-transform: uppercase;
-        text-decoration: none;
-        box-shadow: 0 0 25px rgba(46, 204, 113, 0.4);
-        transition: transform 0.2s, box-shadow 0.2s;
-        width: 100%;
-        max-width: 700px; /* Limite de largura para não ficar gigante em telas wide */
-    }
-
-    .btn-large-green:hover {
-        transform: scale(1.02);
-        box-shadow: 0 0 40px rgba(46, 204, 113, 0.7);
-    }
-    
-    .btn-large-green span { margin-left: 10px; font-size: 1.2rem; }
-
-    /* --- RESPONSIVIDADE --- */
-    @media (max-width: 992px) {
-        .conditions-grid {
-            flex-direction: column; /* Empilha no tablet/mobile */
-        }
-        .condition-card {
-            width: 100%;
-            justify-content: flex-start;
-        }
-        .condicoes-header h2 {
-            font-size: 1.8rem;
-        }
-        .btn-large-green {
-            padding: 20px 20px;
-            font-size: 0.8rem;
-        }
-    }
-    /* --- CSS ESPECÍFICO PARA A SEÇÃO FAQ --- */
-    #faq-rocket {
-        position: relative;
-        width: 100%;
-        /* O fundo na imagem é um azul mais vibrante que as seções anteriores */
-        background: linear-gradient(180deg, #100B2E 0%, #1c1cff 50%, #100B2E 100%);
-        padding: 100px 5%;
-        overflow: hidden;
-        color: #fff;
-    }
-
-    /* Grid Overlay para manter consistência */
-    .grid-overlay-faq {
-        position: absolute;
-        top: 0; left: 0; width: 100%; height: 100%;
-        background-image: 
-            linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
-        background-size: 60px 60px;
-        pointer-events: none;
-        z-index: 1;
-    }
-
-    .faq-container {
-        position: relative;
-        z-index: 10;
-        max-width: 900px; /* Largura um pouco menor para leitura focada */
-        margin: 0 auto;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-
-    /* --- HEADER --- */
-    .faq-header {
-        text-align: center;
-        margin-bottom: 50px;
-    }
-
-    .faq-header h2 {
-        font-family: 'Montserrat', sans-serif;
-        font-weight: 800;
-        font-size: 2.5rem;
-        line-height: 1.1;
-        text-transform: uppercase;
-        margin-bottom: 15px;
-        color: #fff;
-    }
-
-    /* Estilo para "MAIS COMUNS" em preto/escuro como na imagem */
-    .faq-header h2 span.dark-highlight {
-        color: #020210; /* Texto escuro */
-        text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff; /* Borda branca para contraste no azul */
-    }
-
-    .faq-header p {
-        font-family: 'Inter', sans-serif;
-        font-size: 1rem;
-        color: #e0e0ff;
-    }
-
-    /* --- LISTA DE PERGUNTAS (DETAILS/SUMMARY) --- */
-    .faq-list {
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        gap: 15px;
-        margin-bottom: 50px;
-    }
-
-    details.faq-item {
-        background-color: #0a0e29; /* Fundo escuro do card */
-        border: 1px solid rgba(80, 100, 255, 0.3);
-        border-radius: 10px; /* Cantos arredondados */
-        overflow: hidden;
-        transition: all 0.3s ease;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-    }
-
-    details.faq-item:hover {
-        border-color: #4455ff;
-    }
-
-    details.faq-item[open] {
-        background-color: #050515;
-        border-color: #2ecc71; /* Fica verde sutilmente quando aberto */
-    }
-
-    /* O elemento clicável (Pergunta) */
-    summary.faq-question {
-        padding: 20px 25px;
-        cursor: pointer;
-        list-style: none; /* Remove seta padrão */
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        font-family: 'Montserrat', sans-serif;
-        font-weight: 700;
-        font-size: 1rem;
-        color: #fff;
-    }
-
-    /* Remove seta padrão em alguns browsers */
-    summary.faq-question::-webkit-details-marker {
-        display: none;
-    }
-
-    /* Ícone de Círculo com Seta */
-    .icon-circle {
-        width: 30px;
-        height: 30px;
-        border: 1px solid rgba(255,255,255,0.3);
-        border-radius: 50%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        transition: transform 0.3s, background-color 0.3s;
-    }
-
-    .icon-circle svg {
-        width: 12px;
-        height: 12px;
-        fill: none;
-        stroke: #fff;
-        stroke-width: 2;
-        transition: stroke 0.3s;
-    }
-
-    /* Animação ao abrir */
-    details[open] summary .icon-circle {
-        transform: rotate(180deg);
-        background-color: #2ecc71;
-        border-color: #2ecc71;
-    }
-
-    /* O Conteúdo da Resposta */
-    .faq-answer {
-        padding: 0 25px 25px 25px;
-        color: #d0d0e0;
-        font-family: 'Inter', sans-serif;
-        font-size: 0.95rem;
-        line-height: 1.6;
-        border-top: 1px solid rgba(255,255,255,0.05);
-        margin-top: 10px;
-        padding-top: 15px;
-        animation: slideDown 0.3s ease-out;
-    }
-
-    @keyframes slideDown {
-        from { opacity: 0; transform: translateY(-10px); }
-        to { opacity: 1; transform: translateY(0); }
-    }
-
-    /* --- CTA BOTÃO VERDE --- */
-    .cta-faq {
-        background: linear-gradient(90deg, #2ecc71, #27ae60);
-        color: #fff;
-        padding: 18px 40px;
-        border-radius: 6px;
-        font-family: 'Montserrat', sans-serif;
-        font-weight: 800;
-        font-size: 0.9rem;
-        text-transform: uppercase;
-        text-decoration: none;
-        box-shadow: 0 0 25px rgba(46, 204, 113, 0.4);
-        transition: transform 0.2s, box-shadow 0.2s;
-        display: inline-flex;
-        align-items: center;
-    }
-
-    .cta-faq:hover {
-        transform: scale(1.05);
-        box-shadow: 0 0 40px rgba(46, 204, 113, 0.7);
-    }
-
-    .cta-faq span { margin-left: 10px; }
-
-    /* --- RESPONSIVIDADE --- */
-    @media (max-width: 768px) {
-        .faq-header h2 { font-size: 1.8rem; }
-        summary.faq-question { padding: 15px 20px; font-size: 0.9rem; }
-        .faq-answer { padding: 0 20px 20px 20px; }
-    }
-    /* --- CSS ESPECÍFICO PARA O FOOTER --- */
-    footer {
-        width: 100%;
-        font-family: 'Inter', sans-serif;
-    }
-
-    /* --- PARTE 1: BRANDING (Fundo Branco) --- */
-    .footer-branding {
-        background-color: #ffffff;
-        padding: 30px 5%;
-        border-bottom: 1px solid #f0f0f0;
-    }
-
-    .branding-container {
-        max-width: 1200px;
-        margin: 0 auto;
-        display: flex;
-        align-items: center;
-        gap: 20px;
-    }
-
-    .footer-logo-block {
-        display: flex;
-        align-items: center;
-        gap: 15px;
-    }
-
-    .footer-logo-img {
-        width: 40px;
-        height: auto;
-    }
-
-    .footer-logo-text {
-        font-family: 'Montserrat', sans-serif;
-        font-weight: 800;
-        font-size: 1.5rem;
-        color: #0a0e29; /* Azul bem escuro, quase preto */
-        letter-spacing: 1px;
-        text-transform: uppercase;
-    }
-
-    .copyright-text {
-        font-size: 0.9rem;
-        color: #9999aa; /* Cinza suave */
-        margin-left: 30px; /* Separação do logo */
-        font-weight: 400;
-    }
-
-    /* --- PARTE 2: NAVEGAÇÃO (Fundo Escuro) --- */
-    .footer-nav-strip {
-        background-color: #050515; /* Azul profundo */
-        padding: 25px 5%;
-        position: relative;
-        overflow: hidden;
-    }
-
-    /* Efeito sutil de listras verticais no fundo escuro (como na imagem) */
-    .footer-stripes {
-        position: absolute;
-        top: 0; left: 0; width: 100%; height: 100%;
-        background-image: repeating-linear-gradient(
-            90deg,
-            rgba(255, 255, 255, 0.02) 0px,
-            rgba(255, 255, 255, 0.02) 1px,
-            transparent 1px,
-            transparent 80px
-        );
-        pointer-events: none;
-        z-index: 1;
-    }
-
-    .nav-container {
-        position: relative;
-        z-index: 2;
-        max-width: 1200px;
-        margin: 0 auto;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-
-    /* Links de Navegação */
-    .footer-links {
-        display: flex;
-        gap: 40px;
-        margin-left: auto; /* Centralização ajustada */
-        margin-right: auto;
-    }
-
-    .footer-link {
-        text-decoration: none;
-        color: #fff;
-        font-size: 0.95rem;
-        font-weight: 500;
-        transition: color 0.3s;
-    }
-
-    .footer-link:hover { color: #ff5c5c; }
-    
-    /* Destaque para o link ativo (Início) em Laranja/Coral */
-    .footer-link.active {
-        color: #ff5c5c; 
-    }
-
-    /* Botão Azul */
-    .btn-footer {
-        background: linear-gradient(90deg, #1c3eff, #3557ff);
-        color: #fff;
-        padding: 12px 25px;
-        border-radius: 4px;
-        font-family: 'Montserrat', sans-serif;
-        font-weight: 700;
-        font-size: 0.85rem;
-        text-transform: uppercase;
-        text-decoration: none;
-        box-shadow: 0 4px 15px rgba(28, 62, 255, 0.4);
-        transition: transform 0.2s, box-shadow 0.2s;
-    }
-
-    .btn-footer:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 6px 20px rgba(28, 62, 255, 0.6);
-    }
-
-    .btn-footer span { font-size: 1rem; margin-left: 5px; }
-
-    /* --- PARTE 3: SLOGAN FINAL (Fundo Branco) --- */
-    .footer-tagline-bar {
-        background-color: #fff;
-        padding: 20px 5%;
-        text-align: center;
-    }
-
-    .tagline-text {
-        color: #b0b0c0; /* Cinza claro */
-        font-size: 0.85rem;
-        font-weight: 500;
-    }
-
-    .tagline-text strong {
-        color: #a0a0b0;
-        font-weight: 700;
-    }
-
-    /* --- RESPONSIVIDADE --- */
-    @media (max-width: 992px) {
-        .branding-container {
-            flex-direction: column;
-            text-align: center;
-            gap: 10px;
-        }
-        .copyright-text { margin-left: 0; }
-        
-        .nav-container {
-            flex-direction: column;
-            gap: 20px;
-        }
-        .footer-links {
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
-        }
-    }
     </style>
 </head>
 <body>
 
-    <section id="inicio">
-        <div class="star" style="top: 10%; left: 10%; width: 2px; height: 2px;"></div>
-        <div class="star" style="top: 20%; left: 80%; width: 3px; height: 3px; animation-delay: 1s;"></div>
-        <div class="star" style="top: 70%; left: 20%; width: 2px; height: 2px; animation-delay: 2s;"></div>
-        <div class="star" style="top: 40%; left: 50%; width: 1px; height: 1px;"></div>
-
-        <nav>
-            <div class="logo">
-                <svg viewBox="0 0 24 24">
-                    <path d="M12 2.5s-4 5-6 9c0 0-1 4 6 10 7-6 6-10 6-10s-2-4-6-9z" fill="#ff4d4d"/>
-                    <circle cx="12" cy="15" r="2" fill="#fff"/>
-                </svg>
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top navbar-custom">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="img/Group.png" alt="Logo" width="30" height="30" class="d-inline-block align-text-top me-2">
                 ROCKET LAB
-            </div>
-            <div class="nav-links">
-                <a href="#inicio" class="active">Início</a>
-                <a href="#depoimentos">Depoimentos</a>
-                <a href="#faq">FAQ</a>
-                <a href="#contato">Contato</a>
-            </div>
-            <a href="#" class="btn-schedule">AGENDAR REUNIÃO ↗</a>
-        </nav>
+            </a>
 
-        <div class="hero-container">
-            
-            <div class="text-content">
-                <h1>
-                    Estamos prontos para lançar o seu negócio ao 
-                    <span class="highlight-box"><span>espaço infinito do sucesso!</span></span>
-                </h1>
-                <p class="description">
-                    A Rocket Lab é a assessoria de marketing feita para <strong>empresários que querem escalar com estratégia, previsibilidade e lucro real.</strong>
-                </p>
-                <p class="sub-description">
-                    Chega de depender da sorte. Aqui, o crescimento é planejado, mensurável e comprovado.
-                </p>
-                <a href="#" class="cta-button">
-                    QUERO MEU MARKETING AGORA! <span>↗</span>
-                </a>
-            </div>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-            <div class="visual-content">
-                <div class="astronaut-wrapper">
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav align-items-center">
+                    <li class="nav-item"><a class="nav-link active" href="#inicio">Início</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#depoimentos">Depoimentos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#faq">FAQ</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contato">Contato</a></li>
+                    <li class="nav-item ms-lg-3 mt-3 mt-lg-0">
+                        <a href="#" class="btn-schedule">AGENDAR REUNIÃO ↗</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section id="inicio">
+        
+        <img src="img/astronauta.png" alt="Background" class="hero-astronaut-bg" style="animation: floatSpace 20s ease-in-out infinite alternate;">
+        
+        <div class="hero-overlay"></div>
+
+        <div class="container hero-content-wrapper">
+            <div class="row">
+                <div class="col-lg-8 text-start text-lg-start text-center">
                     
-                    <div class="image-placeholder">
-                        
-                        </div>
-
-                    <div class="floating-card card-ads">
-                        <svg class="icon-ads" viewBox="0 0 24 24" fill="none">
-                            <path d="M21.4 16.2l-9.2-15c-.4-.7-1.4-.7-1.8 0L9.3 3.3l8.7 15.1c.5.8 1.5 1 2.3.5l1.6-.9c.8-.5 1-1.5.5-2.3l-1-1.5z" fill="#F9AB00"/>
-                            <path d="M11.6 7.2L3.4 21.3c-.4.7-.2 1.6.5 2l1.6.9c.7.4 1.6.2 2-.5l7.5-13-3.4-3.5z" fill="#34A853"/>
-                            <path d="M11.6 7.2l3.4 3.5-3.3 5.8-3.4-3.5 3.3-5.8z" fill="#4285F4"/>
-                        </svg>
+                    <h1>
+                        Estamos prontos <br> para lançar o seu <br> negócio ao <br>
+                        <span class="highlight-box">espaço infinito do sucesso!</span>
+                    </h1>
+                    
+                    <p class="lead mb-4" style="max-width: 600px;">
+                        A Rocket Lab é a assessoria de marketing feita para <strong>empresários que querem escalar com estratégia, previsibilidade e lucro real.</strong>
+                    </p>
+                    
+                    <p class="mb-4" style="font-size: 0.9rem; color: #ccc;">
+                        Chega de depender da sorte. Aqui, o crescimento é planejado, mensurável e comprovado.
+                    </p>
+                    
+                    <div class="btn-container-hero d-flex justify-content-center justify-content-lg-start">
+                        <a href="#" class="cta-button">
+                            QUERO MEU MARKETING AGORA! <span>↗</span>
+                        </a>
                     </div>
 
-                    <div class="floating-card card-analytics">
-                        <svg class="icon-analytics" viewBox="0 0 24 24">
-                            <rect x="4" y="10" width="4" height="10" rx="1" />
-                            <rect x="10" y="4" width="4" height="16" rx="1" />
-                            <rect x="16" y="8" width="4" height="12" rx="1" />
-                        </svg>
-                    </div>
-
-                    <div class="floating-card card-meta">
-                        <svg class="icon-meta" viewBox="0 0 24 24">
-                            <path d="M12 6.5c-2.5 0-4.5 1.5-6 3.5-1.5-2-3.5-3.5-6-3.5C-.5 6.5-.5 17.5 6 17.5c2.5 0 4.5-1.5 6-3.5 1.5 2 3.5 3.5 6 3.5 6.5 0 6.5-11 0-11zM6 14.5c-2 0-3-2-3-3.5s1-3.5 3-3.5c1.5 0 2.5 1 3.5 2.5-1 1.5-2 2.5-3.5 2.5zm12 0c-1.5 0-2.5-1-3.5-2.5 1-1.5 2-2.5 3.5-2.5 2 0 3 2 3 3.5s-1 3.5-3 3.5z"/>
-                        </svg>
-                    </div>
-
-                    <div class="stat-text stat-1">
-                        + R$1.000.000<br>faturado para<br>clientes
-                    </div>
-                    <div class="stat-text stat-2">
-                        +5 anos de<br>experiência
-                    </div>
-                    <div class="stat-text stat-3">
-                        +200 mil<br>investidos<br>em Ads
-                    </div>
                 </div>
             </div>
         </div>
 
-        <div class="bottom-divider">
-            <svg class="curve-svg" viewBox="0 0 1440 120" preserveAspectRatio="none">
-                <path d="M0,60 C400,60 550,60 660,60 C690,60 690,110 720,110 C750,110 750,60 780,60 C890,60 1040,60 1440,60 L1440,120 L0,120 Z" />
-            </svg>
-            
-            <div class="scroll-down-btn">
-                <svg viewBox="0 0 24 24">
-                    <polyline points="6 9 12 15 18 9"></polyline>
-                </svg>
-            </div>
-        </div>
-
     </section>
+<div class="bottom-divider" style="position: relative; z-index: 10; margin-top: -120px; width: 100%; pointer-events: none;">
 
-    <section class="marketing-problem">
+    <svg class="curve-svg" viewBox="0 0 1440 120" preserveAspectRatio="none" style="display: block; width: 100%; height: 120px;">
+        <defs>
+            <linearGradient id="gradTheme" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" style="stop-color:#091c47; stop-opacity:1" />
+                <stop offset="100%" style="stop-color:#02040a; stop-opacity:1" />
+            </linearGradient>
+        </defs>
+        
+        <path d="M0,60 C400,60 550,60 660,60 C690,60 690,110 720,110 C750,110 750,60 780,60 C890,60 1040,60 1440,60 L1440,120 L0,120 Z" fill=#091b44 />
+    </svg>
+    
+    <div class="scroll-down-btn" style="pointer-events: auto;">
+        <svg viewBox="0 0 24 24">
+            <polyline points="6 9 12 15 18 9"></polyline>
+        </svg>
+    </div>
+</div>
+    <section class="marketing-problem" style="background: linear-gradient(180deg, #091c47 0%, #02040a 100%); font-family: 'Space Grotesk', sans-serif;">
         <div class="marketing-content">
             <h2>
                 ESTÁ CANSADO DE 
@@ -1966,9 +240,14 @@
                 SEM RETORNO?
             </h2>
     
-            <p>
+            <p style="margin-bottom: 5px;">
                 Você investe, contrata agências, mas o resultado nunca chega.<br>
                 O problema não é o seu negócio — é a falta de estratégia validada e gestão orientada à performance.
+            </p>
+            <p style="font-size: 10px;">
+                Nós entendemos o cenário: custos altos, leads frios, time comercial
+                perdido e uma comunicação que não converte. <br>É por isso que criamos
+                uma assessoria focada em resultado, não em promessas.
             </p>
     
             <a href="#" class="cta-green">
@@ -1977,21 +256,18 @@
         </div>
     </section>
     
-    <!-- FAIXA VERMELHA SEPARADA (fora da section) -->
     <div class="brand-strip">
         <img src="img/Frame 111.png" alt="Rocket Lab Strip">
     </div>
 
     <section id="contato">
         <div class="grid-overlay"></div>
-                <!-- FOGUETE ESQUERDA -->
-            <img 
+                <img 
             src="img\foguete (8) 3.png" 
             alt="Foguete Rocket Lab"
             class="rocket-blur left"
         >
     
-        <!-- FOGUETE DIREITA -->
         <img 
             src="img\foguete (8) 3.png" 
             alt="Foguete Rocket Lab"
@@ -2046,7 +322,6 @@
             </div>
         </div>
     </section>
-        <!-- FAIXA VERMELHA SEPARADA (fora da section) -->
         <div class="brand-strip">
             <img src="img\Frame 1707480489.png" alt="Rocket Lab Strip">
         </div>
@@ -2524,5 +799,7 @@
                 <p class="tagline-text"><strong>Rocket Lab</strong> — crescimento previsível, performance comprovada.</p>
             </div>
         </footer>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="main.js"></script>
 </body>
 </html>
