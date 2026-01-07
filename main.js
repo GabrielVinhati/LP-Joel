@@ -113,5 +113,25 @@ document.addEventListener('DOMContentLoaded', () => {
             nav.style.boxShadow = 'none';
         }
     });
+    // Seleciona todos os itens do FAQ
+    const faqItems = document.querySelectorAll(".faq-item");
 
+    faqItems.forEach((item) => {
+        // Quando o mouse ENTRAR no item
+        item.addEventListener("mouseenter", () => {
+            // Verifica se é Desktop (largura maior que 992px)
+            if (window.innerWidth > 992) {
+                item.setAttribute("open", "true");
+            }
+        });
+
+        // Quando o mouse SAIR do item
+        item.addEventListener("mouseleave", () => {
+            // Verifica se é Desktop
+            if (window.innerWidth > 992) {
+                item.removeAttribute("open");
+            }
+        });
+    });
+    
 });
