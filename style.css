@@ -124,9 +124,9 @@ nav {
 .nav-links a:hover, .nav-links a.active { color: #ff4d4d; }
 
 .btn-schedule {
-    background: linear-gradient(90deg, #4455ff, #2233dd);
+    background: #1A21CC;
     color: white;
-    padding: 10px 25px;
+    padding: 15px 30px;
     border-radius: 4px;
     text-decoration: none;
     font-weight: 400;
@@ -788,6 +788,16 @@ h1 {
 }
 
 /* --- PARTE 3: DEPOIMENTOS --- */
+#depoimentos {
+    /* Isso diz ao navegador: "Quando rolar até aqui, pare 120px antes" */
+    scroll-margin-top: 150px; 
+    
+    /* Garanta que não tenha sobras de tentativas anteriores */
+    padding-top: 0;
+    margin-top: 0;
+}
+/* Adicione isso no seu CSS */
+
 .testimonials-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -825,10 +835,22 @@ h1 {
 }
 
 .author-avatar {
-    width: 50px;
-    height: 50px;
-    background-color: #ff5c5c;
+    width: 48px;
+    height: 48px;
     border-radius: 50%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    flex-shrink: 0;
+}
+.author-avatar.avatar1{
+    background-image: url("img/mostafa-kordzangeneh-_tcJW4nqVtw-unsplash.jpg"); /* caminho da imagem */
+}
+.author-avatar.avatar2{
+    background-image: url("img/christina-wocintechchat-com-m-SJvDxw0azqw-unsplash.jpg"); /* caminho da imagem */
+}
+.author-avatar.avatar3{
+    background-image: url("img/abdullah-ali-V4bv8rtprTE-unsplash.jpg"); /* caminho da imagem */
 }
 
 .author-info h4 {
@@ -1832,10 +1854,10 @@ footer {
 .btn-footer {
     background: linear-gradient(90deg, #1c3eff, #3557ff);
     color: #fff;
-    padding: 12px 25px;
-    border-radius: 4px;
+    padding: 20px 30px;
+    border-radius: 1px;
     font-family: 'Squada One', cursive;
-    font-weight: 700;
+    font-weight: 400;
     font-size: 0.85rem;
     text-transform: uppercase;
     text-decoration: none;
