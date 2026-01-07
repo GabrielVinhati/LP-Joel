@@ -40,7 +40,7 @@
             margin: 0 10px;
         }
         .nav-link:hover, .nav-link.active {
-            color: white !important;
+            color: #FF605A !important;
         }
         .btn-schedule {
             background: transparent;
@@ -93,7 +93,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, #050a14 0%, rgba(5, 10, 20, 0.9) 35%, rgba(5, 10, 20, 0) 100%);
+            background: linear-gradient(90deg, #050a14 0%, rgba(5, 10, 20, 0.9) 15%, rgba(5, 10, 20, 0) 100%);
             z-index: 1;
         }
 
@@ -121,15 +121,16 @@
 
         .cta-button {
             display: inline-block;
-            background: #25D366; /* Verde destaque */
+            background: #0FB415; /* Verde destaque */
             color: #000;
-            font-weight: 700;
+            font-weight: 400;
             padding: 15px 30px;
-            border-radius: 50px;
+            border-radius: 10px;
             text-decoration: none;
             margin-top: 20px;
             text-transform: uppercase;
             letter-spacing: 0.5px;
+            color: #fff !important;
         }
 
         /* MOBILE (Sobrescreve Bootstrap quando necessário) */
@@ -148,6 +149,13 @@
             .btn-container-hero {
                 display: flex;
                 justify-content: center;
+            }
+            .navbar-collapse {
+                background-color: #050a14; /* Mesma cor da barra ou um tom diferente */
+                padding: 20px; /* Espaçamento interno para não ficar colado */
+                border-radius: 10px; /* Bordas arredondadas para ficar bonito */
+                border: 1px solid rgba(255, 255, 255, 0.1); /* Borda sutil */
+                margin-top: 10px; /* Um pequeno espaço entre o logo e o menu */
             }
         }
     </style>
@@ -223,7 +231,20 @@
             </linearGradient>
         </defs>
         
-        <path d="M0,60 C400,60 550,60 660,60 C690,60 690,110 720,110 C750,110 750,60 780,60 C890,60 1040,60 1440,60 L1440,120 L0,120 Z" fill=#091b44 />
+        <path 
+  d="
+    M0,60
+    H360
+    C420,60 420,90 480,90
+    H960
+    C1020,90 1020,60 1080,60
+    H1440
+    V120
+    H0
+    Z
+  "
+  fill="#091b44"
+/>
     </svg>
     
     <div class="scroll-down-btn" style="pointer-events: auto;">
@@ -236,7 +257,7 @@
         <div class="marketing-content">
             <h2>
                 ESTÁ CANSADO DE 
-                <span>GASTAR COM MARKETING</span> 
+                <span style="background: rgba(255, 96, 90, 0.1);">GASTAR COM MARKETING</span> 
                 SEM RETORNO?
             </h2>
     
@@ -257,8 +278,12 @@
     </section>
     
     <div class="brand-strip">
-        <img src="img/Frame 111.png" alt="Rocket Lab Strip">
-    </div>
+        <div class="brand-strip-track">
+          <img src="img/Frame 111.png" alt="Rocket Lab Strip">
+          <img src="img/Frame 111.png" alt="Rocket Lab Strip">
+        </div>
+      </div>
+      
 
     <section id="contato">
         <div class="grid-overlay"></div>
@@ -323,7 +348,10 @@
         </div>
     </section>
         <div class="brand-strip">
-            <img src="img\Frame 1707480489.png" alt="Rocket Lab Strip">
+            <div class="brand-strip-track">
+                <img src="img\Frame 1707480489.png" alt="Rocket Lab Strip">
+                <img src="img\Frame 1707480489.png" alt="Rocket Lab Strip">
+            </div>
         </div>
         <section id="metodologia">
             <div class="grid-bg"></div>
@@ -333,39 +361,48 @@
             <div class="metodologia-container">
                 
                 <div class="strategy-block">
-                    <div class="strategy-text">
-                        <h2>ESTRATÉGIA, PERFORMANCE E ESTRUTURA</h2>
-                        <span class="strategy-subtitle">O TRIPÉ DO <span>CRESCIMENTO PREVISÍVEL.</span></span>
-                        <p>A Rocket Lab atua em todos os pilares do marketing digital para criar uma operação de <strong>vendas sólida, com base em dados e metodologias validadas.</strong></p>
+                    <div class="strategy-text" style=" max-width: 900px; margin: 0 auto; color: #fff;">
+                        <h2 style="font-size: 2.5rem; margin: 0 0 16px 0; line-height: 1.1;">ESTRATÉGIA, PERFORMANCE E ESTRUTURA</h2>
+                        <span class="strategy-subtitle" style="color: #fff;">O TRIPÉ DO <span>CRESCIMENTO PREVISÍVEL.</span></span>
+                        <p style="color: #fff;">A Rocket Lab atua em todos os pilares do marketing digital para criar uma operação de <strong>vendas sólida, com base em dados e metodologias validadas.</strong></p>
                     </div>
         
-                    <div class="pillars-grid">
-                        <div class="pillar-card">
-                            <svg class="pillar-icon" viewBox="0 0 24 24">
-                                <path d="M16 6l2.29 2.29-4.88 4.88-4-4L2 16.59 3.41 18l6-6 4 4 6.3-6.29L22 12V6z"/>
+                    <div class="pillars-grid" style="display: grid; gap: 20px; width: 100%; weight: 30px; height: 30px; margin-top: 40px;">
+                        
+                        <div class="pillar-card" style="border: 2px solid #FF605A; border-radius: 24px; background-color: rgba(0, 0, 0, 0.6); backdrop-filter: blur(5px); aspect-ratio: 1/1; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 20px;">
+    
+                            <svg class="pillar-icon" viewBox="0 0 24 24" fill="currentColor" style="width: 100px; height: 100px; margin-bottom: 10px; color: #fff;">
+                                <path d="M11 2a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v12h.5a.5.5 0 0 1 0 1H.5a.5.5 0 0 1 0-1H1v-3a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3h1V7a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v7h1z"/>
                             </svg>
-                            <p><strong>Crescimento previsível:</strong>planejamento estratégico completo.</p>
+                            
+                            <p style="font-size: 1rem; color: #fff; margin: 0;"><strong>Crescimento previsível:</strong><br>planejamento estratégico completo.</p>
                         </div>
-                        <div class="pillar-card">
-                            <svg class="pillar-icon" viewBox="0 0 24 24">
-                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1.41 16.09V20h-2.67v-1.93c-1.71-.36-3.15-1.46-3.27-3.4h1.96c.1 1.05.69 1.64 1.83 1.64 1.27 0 1.96-.86 1.96-1.84 0-2.07-2.73-2.17-2.73-3.66 0-1.04.81-1.87 2.09-1.98V6h2.67v2.04c1.55.33 2.53 1.5 2.65 3.09h-1.95c-.15-.81-.66-1.44-1.83-1.44-1.15 0-1.77.72-1.77 1.57 0 1.99 2.8 2.08 2.8 3.73 0 1.23-.82 2.13-2.14 2.1z"/>
+        
+                        <div class="pillar-card" style="border: 2px solid #FF605A; border-radius: 24px; background-color: rgba(0, 0, 0, 0.6); backdrop-filter: blur(5px); aspect-ratio: 1/1; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 20px;">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="#FF605A" style="width: 80px; height: 80px; margin-bottom: 20px;">
+                                <path d="M5.5 9.511c.076.954.83 1.697 2.182 1.785V12h.6v-.709c1.4-.098 2.218-.846 2.218-1.932 0-.987-.626-1.496-1.745-1.76l-.473-.112V5.57c.6.068.982.396 1.074.85h1.052c-.076-.919-.864-1.638-2.126-1.716V4h-.6v.719c-1.195.117-2.01.836-2.01 1.853 0 .9.606 1.472 1.613 1.707l.397.098v2.034c-.615-.093-1.022-.43-1.114-.9zm2.177-2.166c-.59-.137-.91-.416-.91-.836 0-.47.345-.822.915-.925v1.76h-.005zm.692 1.193c.717.166 1.048.435 1.048.91 0 .542-.412.914-1.135.982V8.518z"/>
+                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
+                                <path d="M8 13.5a5.5 5.5 0 1 1 0-11 5.5 5.5 0 0 1 0 11m0 .5A6 6 0 1 0 8 2a6 6 0 0 0 0 12"/>
                             </svg>
-                            <p><strong>Custo por resultado otimizado:</strong>campanhas inteligentes e rastreáveis.</p>
+                            <p style="font-size: 1rem; color: #fff; margin: 0;"><strong>Custo por resultado otimizado:</strong><br>campanhas inteligentes e rastreáveis.</p>
                         </div>
-                        <div class="pillar-card">
-                            <svg class="pillar-icon" viewBox="0 0 24 24">
+        
+                        <div class="pillar-card" style="border: 2px solid #FF605A; border-radius: 24px; background-color: rgba(0, 0, 0, 0.6); backdrop-filter: blur(5px); aspect-ratio: 1/1; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 20px;">
+                            <svg class="pillar-icon" viewBox="0 0 24 24" fill="currentColor" style="width: 80px; height: 80px; margin-bottom: 20px; color: #fff;">
                                 <path d="M20.5 11H19V7c0-1.1-.9-2-2-2h-4V3.5C13 2.12 11.88 1 10.5 1S8 2.12 8 3.5V5H4c-1.1 0-1.99.9-1.99 2v3.8H3.5c1.49 0 2.7 1.21 2.7 2.7s-1.21 2.7-2.7 2.7H2V20c0 1.1.9 2 2 2h3.8v-1.5c0-1.49 1.21-2.7 2.7-2.7 1.49 0 2.7 1.21 2.7 2.7V22H17c1.1 0 2-.9 2-2v-4h1.5c1.38 0 2.5-1.12 2.5-2.5S21.88 11 20.5 11z"/>
                             </svg>
-                            <p><strong>Funis validados:</strong>aplicados em diferentes mercados.</p>
+                            <p style="font-size: 1rem; color: #fff; margin: 0;"><strong>Funis validados:</strong><br>aplicados em diferentes mercados.</p>
                         </div>
-                        <div class="pillar-card">
-                            <svg class="pillar-icon" viewBox="0 0 24 24">
-                                <path d="M9 11.75c-.69 0-1.25.56-1.25 1.25s.56 1.25 1.25 1.25 1.25-.56 1.25-1.25-.56-1.25-1.25-1.25zm6 0c-.69 0-1.25.56-1.25 1.25s.56 1.25 1.25 1.25 1.25-.56 1.25-1.25-.56-1.25-1.25-1.25zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zM8 18c0-.55.45-1 1-1h6c.55 0 1 .45 1 1v1H8v-1z"/>
+        
+                        <div class="pillar-card" style="border: 2px solid #FF605A; border-radius: 24px; background-color: rgba(0, 0, 0, 0.6); backdrop-filter: blur(5px); aspect-ratio: 1/1; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 20px;">
+                            <svg class="pillar-icon" viewBox="0 0 16 16" fill="currentColor" style="width: 80px; height: 80px; margin-bottom: 20px; color: #fff;">
+                                <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6m-5.784 6A2.24 2.24 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.3 6.3 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1zM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5"/>
                             </svg>
-                            <p><strong>Treinamento comercial:</strong>capacite sua equipe para vender com método.</p>
+                            <p style="font-size: 1rem; color: #fff; margin: 0;"><strong>Treinamento comercial:</strong><br>capacite sua equipe para vender com método.</p>
                         </div>
+        
                     </div>
-                </div>
+                    </div>
         
                 <div class="cta-wrapper">
                     <a href="#contato" class="cta-wide">
@@ -422,7 +459,10 @@
             </div>
         </section>
         <div class="brand-strip">
-            <img src="img\Frame 111.png" alt="Rocket Lab Strip">
+            <div class="brand-strip-track">
+                <img src="img\Frame 111.png" alt="Rocket Lab Strip">
+                <img src="img\Frame 111.png" alt="Rocket Lab Strip">
+            </div>
         </div>
 
         <section id="conquistas">
@@ -444,11 +484,16 @@
                     
                     <div class="achievement-card">
                         <div class="card-icon-container">
-                            <svg class="card-icon-svg" viewBox="0 0 24 24">
-                                <path d="M13.13 22.19L11 21.09L2.5 12.59L10.5 4.59C11.5 3.59 12.91 2.99 14.34 2.99C15.77 2.99 17.18 3.59 18.18 4.59L22.42 8.83C24.53 10.94 24.53 14.37 22.42 16.48L14.55 22.19H13.13ZM4.99 12.59L12.13 19.73C13.43 21.03 15.54 21.03 16.84 19.73L21.08 15.49C22.38 14.19 22.38 12.08 21.08 10.78L16.84 6.54C15.54 5.24 13.43 5.24 12.13 6.54L4.99 12.59Z" />
-                                <path d="M15.41 14.41L14 13L17.59 9.41H7.99V7.41H17.59L14 3.82L15.41 2.41L21.41 8.41L15.41 14.41Z" />
-                            </svg>
-                        </div>
+    <svg xmlns="http://www.w3.org/2000/svg" 
+         width="64" 
+         height="64" 
+         fill="currentColor" 
+         class="bi bi-rocket-takeoff-fill" 
+         viewBox="0 0 16 16"
+         style="color: #0A0D3B;"> <path d="M12.17 9.53c2.307-2.592 3.278-4.684 3.641-6.218.21-.887.214-1.58.16-2.065a3.6 3.6 0 0 0-.108-.563 2 2 0 0 0-.078-.23V.453c-.073-.164-.168-.234-.352-.295a2 2 0 0 0-.16-.045 4 4 0 0 0-.57-.093c-.49-.044-1.19-.03-2.08.188-1.536.374-3.618 1.343-6.161 3.604l-2.4.238h-.006a2.55 2.55 0 0 0-1.524.734L.15 7.17a.512.512 0 0 0 .433.868l1.896-.271c.28-.04.592.013.955.132.232.076.437.16.655.248l.203.083c.196.816.66 1.58 1.275 2.195.613.614 1.376 1.08 2.191 1.277l.082.202c.089.218.173.424.249.657.118.363.172.676.132.956l-.271 1.9a.512.512 0 0 0 .867.433l2.382-2.386c.41-.41.668-.949.732-1.526zm.11-3.699c-.797.8-1.93.961-2.528.362-.598-.6-.436-1.733.361-2.532.798-.799 1.93-.96 2.528-.361s.437 1.732-.36 2.531Z"/>
+        <path d="M5.205 10.787a7.6 7.6 0 0 0 1.804 1.352c-1.118 1.007-4.929 2.028-5.054 1.903-.126-.127.737-4.189 1.839-5.18.346.69.837 1.35 1.411 1.925"/>
+    </svg>
+</div>
                         <div class="card-content-text">
                             <h3>Escalabilidade real:</h3>
                             <p>mais vendas, menos custos.</p>
@@ -457,8 +502,17 @@
         
                     <div class="achievement-card">
                         <div class="card-icon-container">
-                            <svg class="card-icon-svg" viewBox="0 0 24 24">
-                                <path d="M12 2C6.49 2 2 6.49 2 12S6.49 22 12 22 22 17.51 22 12 17.51 2 12 2ZM12 20C7.59 20 4 16.41 4 12S7.59 4 12 4 20 7.59 20 12 16.41 20 12 20ZM15.31 13.9C15.7 13.35 15.93 12.7 15.93 12C15.93 9.79 14.14 8 11.93 8C11.23 8 10.58 8.23 10.03 8.62L7.2 5.79C8.52 4.69 10.17 4.07 11.93 4.07C16.35 4.07 19.93 7.65 19.93 12C19.93 13.76 19.31 15.41 18.21 16.73L15.31 13.9ZM12.63 15.22L13.35 14.5C13.71 13.8 13.93 12.95 13.93 12.07C13.93 10.97 13.03 10.07 11.93 10.07C11.05 10.07 10.2 10.29 9.5 10.65L8.78 11.37C8.29 11.86 8.29 12.64 8.78 13.13L10.87 15.22C11.36 15.71 12.14 15.71 12.63 15.22Z"/>
+                            <svg xmlns="http://www.w3.org/2000/svg" 
+                                 width="64" 
+                                 height="64" 
+                                 fill="currentColor" 
+                                 class="bi bi-rocket-takeoff-fill" 
+                                 viewBox="0 0 16 16"
+                                 style="color: #0A0D3B;">
+                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
+                                <path d="M8 13A5 5 0 1 1 8 3a5 5 0 0 1 0 10m0 1A6 6 0 1 0 8 2a6 6 0 0 0 0 12"/>
+                                <path d="M8 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6m0 1a4 4 0 1 0 0-8 4 4 0 0 0 0 8"/>
+                                <path d="M9.5 8a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0"/>
                             </svg>
                         </div>
                         <div class="card-content-text">
@@ -469,8 +523,15 @@
         
                     <div class="achievement-card">
                         <div class="card-icon-container">
-                            <svg class="card-icon-svg" viewBox="0 0 24 24">
-                                <path d="M20 2H4C2.9 2 2 2.9 2 4V22L6 18H20C21.1 18 22 17.1 22 16V4C22 2.9 21.1 2 20 2ZM11 14H6V12H11V14ZM18 14H13V12H18V14ZM18 10H6V8H18V10ZM18 6H6V4H18V6Z"/>
+                            <svg xmlns="http://www.w3.org/2000/svg" 
+                                 width="64" 
+                                 height="64" 
+                                 fill="currentColor" 
+                                 class="bi bi-rocket-takeoff-fill" 
+                                 viewBox="0 0 16 16"
+                                 style="color: #0A0D3B;">
+                                <path d="M16 8c0 3.866-3.582 7-8 7a9 9 0 0 1-2.347-.306c-.584.296-1.925.864-4.181 1.234-.2.032-.352-.176-.273-.362.354-.836.674-1.95.77-2.966C.744 11.37 0 9.76 0 8c0-3.866 3.582-7 8-7s8 3.134 8 7M5 8a1 1 0 1 0-2 0 1 1 0 0 0 2 0m4 0a1 1 0 1 0-2 0 1 1 0 0 0 2 0m3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2"/>
+
                             </svg>
                         </div>
                         <div class="card-content-text">
@@ -481,8 +542,15 @@
         
                     <div class="achievement-card">
                         <div class="card-icon-container">
-                            <svg class="card-icon-svg" viewBox="0 0 24 24">
-                                <path d="M15.5 14H14.71L14.43 13.73C15.41 12.59 16 11.11 16 9.5C16 5.91 13.09 3 9.5 3C5.91 3 3 5.91 3 9.5C3 13.09 5.91 16 9.5 16C11.11 16 12.59 15.41 13.73 14.43L14 14.71V15.5L19 20.49L20.49 19L15.5 14ZM9.5 14C7.01 14 5 11.99 5 9.5C5 7.01 7.01 5 9.5 5C11.99 5 14 7.01 14 9.5C14 11.99 11.99 14 9.5 14Z"/>
+                            <svg xmlns="http://www.w3.org/2000/svg" 
+                                 width="64" 
+                                 height="64" 
+                                 fill="currentColor" 
+                                 class="bi bi-rocket-takeoff-fill" 
+                                 viewBox="0 0 16 16"
+                                 style="color: #0A0D3B;">
+                                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
+
                             </svg>
                         </div>
                         <div class="card-content-text">
@@ -493,8 +561,15 @@
         
                     <div class="achievement-card">
                         <div class="card-icon-container">
-                            <svg class="card-icon-svg" viewBox="0 0 24 24">
-                                <path d="M12 2C6.48 2 2 6.48 2 12S6.48 22 12 22 22 17.52 22 12 17.52 2 12 2ZM11 19.93C7.05 19.44 4 16.08 4 12C4 11.38 4.08 10.79 4.21 10.21L9 15V16C9 17.1 9.9 18 11 18V19.93ZM17.9 17.39C17.64 16.58 16.9 16 16 16H15V13C15 12.45 14.55 12 14 12H8V10H10C10.55 10 11 9.55 11 9V7H13C14.1 7 15 6.1 15 5V4.59C17.93 5.78 20 8.65 20 12C20 14.08 19.2 15.97 17.9 17.39Z"/>
+                            <svg xmlns="http://www.w3.org/2000/svg" 
+                                 width="64" 
+                                 height="64" 
+                                 fill="currentColor" 
+                                 class="bi bi-rocket-takeoff-fill" 
+                                 viewBox="0 0 16 16"
+                                 style="color: #0A0D3B;">
+                                <path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m7.5-6.923c-.67.204-1.335.82-1.887 1.855A8 8 0 0 0 5.145 4H7.5zM4.09 4a9.3 9.3 0 0 1 .64-1.539 7 7 0 0 1 .597-.933A7.03 7.03 0 0 0 2.255 4zm-.582 3.5c.03-.877.138-1.718.312-2.5H1.674a7 7 0 0 0-.656 2.5zM4.847 5a12.5 12.5 0 0 0-.338 2.5H7.5V5zM8.5 5v2.5h2.99a12.5 12.5 0 0 0-.337-2.5zM4.51 8.5a12.5 12.5 0 0 0 .337 2.5H7.5V8.5zm3.99 0V11h2.653c.187-.765.306-1.608.338-2.5zM5.145 12q.208.58.468 1.068c.552 1.035 1.218 1.65 1.887 1.855V12zm.182 2.472a7 7 0 0 1-.597-.933A9.3 9.3 0 0 1 4.09 12H2.255a7 7 0 0 0 3.072 2.472M3.82 11a13.7 13.7 0 0 1-.312-2.5h-2.49c.062.89.291 1.733.656 2.5zm6.853 3.472A7 7 0 0 0 13.745 12H11.91a9.3 9.3 0 0 1-.64 1.539 7 7 0 0 1-.597.933M8.5 12v2.923c.67-.204 1.335-.82 1.887-1.855q.26-.487.468-1.068zm3.68-1h2.146c.365-.767.594-1.61.656-2.5h-2.49a13.7 13.7 0 0 1-.312 2.5m2.802-3.5a7 7 0 0 0-.656-2.5H12.18c.174.782.282 1.623.312 2.5zM11.27 2.461c.247.464.462.98.64 1.539h1.835a7 7 0 0 0-3.072-2.472c.218.284.418.598.597.933M10.855 4a8 8 0 0 0-.468-1.068C9.835 1.897 9.17 1.282 8.5 1.077V4z"/>
+
                             </svg>
                         </div>
                         <div class="card-content-text">
@@ -767,38 +842,41 @@
         
             </div>
         </section>
-        <footer>
-            <div class="footer-branding">
-                <div class="branding-container">
-                    <div class="footer-logo-block">
-                        <img src="img/Group.png" alt="Rocket Lab Logo" class="footer-logo-img">
-                        <span class="footer-logo-text">ROCKET LAB</span>
-                    </div>
-                    <span class="copyright-text">© 2025 Rocket Lab. Todos os direitos reservados.</span>
+        <footer style="background-color: #000; color: #fff; text-align: center;"> <div class="footer-branding" style="padding: 40px 0 20px 0; display: flex; flex-direction: column; align-items: center;">
+            <div class="branding-container">
+                
+                <div class="footer-logo-block" style="display: flex; align-items: center; justify-content: center; gap: 12px; margin-bottom: 12px;">
+                    <img src="img/Group.png" alt="Rocket Lab Logo" class="footer-logo-img" style="height: 40px; display: block;">
+                    <span class="footer-logo-text" style="font-weight: bold; font-size: 1.5rem; white-space: nowrap;">ROCKET LAB</span>
                 </div>
+    
+                <span class="copyright-text" style="opacity: 0.6; font-size: 0.9rem; display: block;">© 2025 Rocket Lab. Todos os direitos reservados.</span>
             </div>
-        
-            <div class="footer-nav-strip">
-                <div class="footer-stripes"></div> <div class="nav-container">
-                    <div style="width: 150px; display: none; lg:block;"></div> 
-        
-                    <nav class="footer-links">
-                        <a href="#inicio" class="footer-link active">Início</a>
-                        <a href="#depoimentos" class="footer-link">Depoimentos</a>
-                        <a href="#faq" class="footer-link">FAQ</a>
-                        <a href="#contato" class="footer-link">Contato</a>
-                    </nav>
-        
-                    <a href="#contato" class="btn-footer">
-                        AGENDAR REUNIÃO <span>↗</span>
-                    </a>
-                </div>
+        </div>
+    
+        <div class="footer-nav-strip" style="border-top: 1px solid rgba(255,255,255,0.1); border-bottom: 1px solid rgba(255,255,255,0.1); padding: 24px 0;">
+            
+            <div class="nav-container" style="display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 40px;"> 
+                
+                <nav class="footer-links" style="display: flex; gap: 24px; align-items: center;">
+                    <a href="#inicio" class="footer-link" style="color: #fff; text-decoration: none;">Início</a>
+                    <a href="#depoimentos" class="footer-link" style="color: #fff; text-decoration: none;">Depoimentos</a>
+                    <a href="#faq" class="footer-link" style="color: #fff; text-decoration: none;">FAQ</a>
+                    <a href="#contato" class="footer-link" style="color: #fff; text-decoration: none;">Contato</a>
+                </nav>
+    
+                <a href="#contato" class="btn-footer" style="background-color: #FF605A; color: #fff; padding: 10px 20px; border-radius: 50px; text-decoration: none; font-weight: bold; display: inline-flex; align-items: center; gap: 8px;">
+                    AGENDAR REUNIÃO <span>↗</span>
+                </a>
+    
             </div>
-        
-            <div class="footer-tagline-bar">
-                <p class="tagline-text"><strong>Rocket Lab</strong> — crescimento previsível, performance comprovada.</p>
-            </div>
-        </footer>
+        </div>
+    
+        <div class="footer-tagline-bar" style="padding: 24px 0;">
+            <p class="tagline-text" style="margin: 0; opacity: 0.8;"><strong>Rocket Lab</strong> — crescimento previsível, performance comprovada.</p>
+        </div>
+    
+    </footer>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="main.js"></script>
 </body>

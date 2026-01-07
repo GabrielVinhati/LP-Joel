@@ -13,6 +13,31 @@ h1, h2, h3, .logo, .btn-schedule, .cta-button, .btn-submit, .btn-footer, .faq-qu
     font-weight: 400; /* Reseta o peso pois a Squada já é grossa */
     letter-spacing: 1px; /* Aumenta um pouco o espaço pois ela é condensada */
 }
+.section-divider {
+    height: 120px;
+    background: #091b44;
+    clip-path: polygon(
+      0% 0%,
+      33% 0%,
+      36% 25%,
+      64% 25%,
+      67% 0%,
+      100% 0%,
+      100% 100%,
+      0% 100%
+    );
+  }
+  .bottom-divider {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 120px;
+  
+    pointer-events: none;
+    z-index: 10;
+  }
+  
 body {
     background-color: #020210; /* Cor de fundo da próxima seção para continuidade */
     color: #fff;
@@ -34,7 +59,6 @@ body {
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    padding-bottom: 80px; /* Espaço para a curva */
 }
 
 /* Efeito de Grid (Linhas finas ao fundo) */
@@ -169,9 +193,9 @@ h1 {
 .cta-button {
     display: inline-flex;
     align-items: center;
-    background: linear-gradient(90deg, #2ecc71, #27ae60);
+    background: #0FB415;
     color: white;
-    font-weight: 800;
+    font-weight: 400;
     text-transform: uppercase;
     padding: 18px 35px;
     border-radius: 5px;
@@ -181,7 +205,33 @@ h1 {
     transition: all 0.3s ease;
     letter-spacing: 0.5px;
 }
-
+.brand-strip {
+    width: 100%;
+    overflow: hidden;
+    background: transparent; /* ou a cor da section */
+  }
+  
+  .brand-strip-track {
+    display: flex;
+    width: max-content;
+    animation: scroll-strip 30s linear infinite;
+  }
+  
+  .brand-strip img {
+    height: 60px; /* ajuste conforme sua faixa */
+    width: auto;
+    flex-shrink: 0;
+  }
+  
+  @keyframes scroll-strip {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+  
 .cta-button:hover {
     transform: scale(1.05);
     box-shadow: 0 0 30px rgba(46, 204, 113, 0.8);
@@ -322,7 +372,7 @@ h1 {
  
 .cta-green {
     display: inline-block;
-    background: linear-gradient(90deg, #2ecc71, #27ae60);
+    background: #0FB415;
     color: #fff;
     padding: 16px 32px;
     border-radius: 6px;
@@ -494,13 +544,13 @@ h1 {
 .btn-submit {
     width: 100%;
     padding: 20px;
-    background: linear-gradient(90deg, #2ECC71, #27AE60); /* Gradiente Verde */
+    background: #0FB415; /* Gradiente Verde */
     border: none;
     border-radius: 10px;
     color: white;
     font-family: 'Squada One', cursive;
-    font-weight: 800;
-    font-size: 1.1rem;
+    font-weight: 400;
+    font-size: 1.4rem;
     text-transform: uppercase;
     cursor: pointer;
     display: flex;
@@ -559,7 +609,7 @@ h1 {
 #metodologia {
     position: relative;
     width: 100%;
-    background: linear-gradient(180deg, #100B2E 0%, #020210 100%);
+    background: linear-gradient(180deg, #242BD3 0%, #0B0E43 100%);
     padding: 100px 5%;
     overflow: hidden;
     color: #fff;
@@ -692,13 +742,13 @@ h1 {
 .cta-wide {
     display: inline-flex;
     align-items: center;
-    background: linear-gradient(90deg, #2ecc71, #27ae60); /* Verde */
+    background: #0FB415; /* Verde */
     color: #fff;
     padding: 18px 40px;
     border-radius: 6px;
     text-decoration: none;
     font-family: 'Squada One', cursive;
-    font-weight: 800;
+    font-weight: 400;
     text-transform: uppercase;
     font-size: 0.9rem;
     box-shadow: 0 0 20px rgba(46, 204, 113, 0.4);
@@ -796,7 +846,7 @@ h1 {
     position: relative;
     width: 100%;
     /* Gradiente de fundo profundo azul/roxo */
-    background: linear-gradient(135deg, #0a0e29 0%, #020210 100%);
+    background: #0A0C37;
     padding: 120px 5%;
     overflow: hidden;
     color: #fff;
@@ -886,9 +936,9 @@ h1 {
 /* Estilo do Card Individual */
 .achievement-card {
     /* Gradiente Azul Brilhante do Card */
-    background: linear-gradient(90deg, rgba(30, 40, 180, 0.6) 0%, rgba(20, 30, 120, 0.7) 100%);
+    background: #2025B9;
     backdrop-filter: blur(10px);
-    border: 2px solid rgba(80, 120, 255, 0.6); /* Borda azul brilhante */
+    border: 2px solid #fff; /* Borda azul brilhante */
     border-radius: 40px; /* Bordas bem arredondadas */
     padding: 25px 35px;
     display: flex;
@@ -910,22 +960,9 @@ h1 {
     border-color: rgba(100, 150, 255, 0.8);
 }
 
-.card-icon-container {
-    flex-shrink: 0;
-    width: 60px;
-    height: 60px;
-    background-color: rgba(0, 0, 30, 0.5); /* Círculo escuro atrás do ícone */
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
 
-.card-icon-svg {
-    width: 32px;
-    height: 32px;
-    fill: #0a0e29; /* Ícone escuro como na referência */
-}
+
+
 
 .card-content-text h3 {
     font-family: 'Squada One', cursive;
@@ -966,7 +1003,7 @@ h1 {
 #garantia {
     position: relative;
     width: 100%;
-    background: linear-gradient(180deg, #020210 0%, #100B2E 100%);
+    background: linear-gradient(180deg, #0A0C37 0%, #100B2E 100%);
     padding: 120px 5%;
     overflow: hidden;
     color: #fff;
@@ -1050,7 +1087,7 @@ h1 {
 .cta-garantia {
     display: inline-flex;
     align-items: center;
-    background: linear-gradient(90deg, #2ecc71, #27ae60); /* Verde */
+    background: #0FB415; /* Verde */
     color: #fff;
     padding: 16px 32px;
     border-radius: 6px;
@@ -1098,7 +1135,7 @@ h1 {
     position: relative;
     width: 100%;
     /* Gradiente de fundo profundo azul */
-    background: linear-gradient(180deg, #020210 0%, #0a0e29 100%);
+    background: #0A0C37;
     padding: 100px 5%;
     overflow: hidden;
     color: #fff;
@@ -1146,12 +1183,12 @@ h1 {
 /* --- HEADER DA SEÇÃO --- */
 .top-pill-cta {
     display: inline-block;
-    background: linear-gradient(90deg, #2ecc71, #27ae60);
+    background: #0FB415;
     color: #fff;
     padding: 12px 25px;
     border-radius: 4px;
     font-family: 'Squada One', cursive;
-    font-weight: 700;
+    font-weight: 400;
     font-size: 0.8rem;
     text-transform: uppercase;
     text-decoration: none;
@@ -1259,12 +1296,12 @@ h1 {
 .bottom-cta-btn {
     display: inline-flex;
     align-items: center;
-    background: linear-gradient(90deg, #2ecc71, #27ae60);
+    background: #0FB415;
     color: #fff;
     padding: 18px 40px;
     border-radius: 6px;
     font-family: 'Squada One', cursive;
-    font-weight: 800;
+    font-weight: 400;
     font-size: 0.9rem;
     text-transform: uppercase;
     text-decoration: none;
@@ -1338,7 +1375,7 @@ h1 {
     position: relative;
     width: 100%;
     /* Mesmo gradiente da seção anterior para continuidade visual */
-    background: linear-gradient(180deg, #0a0e29 0%, #020210 100%);
+    background: #1c1cff;
     padding: 100px 5%;
     overflow: hidden;
     color: #fff;
@@ -1391,7 +1428,7 @@ h1 {
  
 /* Optei por manter legível mas diferenciado, como um cinza escuro azulado */
 .brand-dark {
-    color: #3b426a; 
+    color: #000000; 
     text-shadow: 0 1px 1px rgba(255,255,255,0.1);
 }
 
@@ -1407,9 +1444,9 @@ h1 {
 
 /* Reutilizando o estilo visual do card, mas ajustando dimensões */
 .condition-card {
-    background: linear-gradient(135deg, rgba(30, 40, 100, 0.6) 0%, rgba(10, 15, 50, 0.8) 100%);
+    background: #13166D;
     backdrop-filter: blur(10px);
-    border: 1px solid rgba(100, 120, 255, 0.5);
+    border: 2px solid #fff;
     border-radius: 50px; /* Pílula completa */
     padding: 30px 40px;
     
@@ -1465,13 +1502,13 @@ h1 {
     display: inline-flex;
     justify-content: center;
     align-items: center;
-    background: linear-gradient(90deg, #2ecc71, #27ae60);
+    background: #0FB415;
     color: #fff;
     padding: 20px 60px; /* Mais largo */
     border-radius: 8px;
     font-family: 'Squada One', cursive;
-    font-weight: 800;
-    font-size: 0.95rem;
+    font-weight: 400;
+    font-size: 1.5rem;
     text-transform: uppercase;
     text-decoration: none;
     box-shadow: 0 0 25px rgba(46, 204, 113, 0.4);
@@ -1509,7 +1546,7 @@ h1 {
     position: relative;
     width: 100%;
     /* O fundo na imagem é um azul mais vibrante que as seções anteriores */
-    background: linear-gradient(180deg, #100B2E 0%, #1c1cff 50%, #100B2E 100%);
+    background: linear-gradient(180deg,#1c1cff 50%, #100B2E 0%, #1c1cff 50%, #100B2E 100%);
     padding: 100px 5%;
     overflow: hidden;
     color: #fff;
@@ -1545,8 +1582,8 @@ h1 {
 
 .faq-header h2 {
     font-family: 'Squada One', cursive;
-    font-weight: 800;
-    font-size: 2.5rem;
+    font-weight: 400;
+    font-size: 4rem;
     line-height: 1.1;
     text-transform: uppercase;
     margin-bottom: 15px;
@@ -1556,7 +1593,7 @@ h1 {
 /* Estilo para "MAIS COMUNS" em preto/escuro como na imagem */
 .faq-header h2 span.dark-highlight {
     color: #020210; /* Texto escuro */
-    text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff; /* Borda branca para contraste no azul */
+
 }
 
 .faq-header p {
@@ -1601,8 +1638,8 @@ summary.faq-question {
     justify-content: space-between;
     align-items: center;
     font-family: 'Squada One', cursive;
-    font-weight: 700;
-    font-size: 1rem;
+    font-weight: 400;
+    font-size: 1.5rem;
     color: #fff;
 }
 
@@ -1659,13 +1696,13 @@ details[open] summary .icon-circle {
 
 /* --- CTA BOTÃO VERDE --- */
 .cta-faq {
-    background: linear-gradient(90deg, #2ecc71, #27ae60);
+    background: #0FB415;
     color: #fff;
     padding: 18px 40px;
     border-radius: 6px;
     font-family: 'Squada One', cursive;
-    font-weight: 800;
-    font-size: 0.9rem;
+    font-weight: 400;
+    font-size: 1.2rem;
     text-transform: uppercase;
     text-decoration: none;
     box-shadow: 0 0 25px rgba(46, 204, 113, 0.4);
@@ -1737,7 +1774,7 @@ footer {
 
 /* --- PARTE 2: NAVEGAÇÃO (Fundo Escuro) --- */
 .footer-nav-strip {
-    background-color: #050515; /* Azul profundo */
+    background-color: #0B0D4E; /* Azul profundo */
     padding: 25px 5%;
     position: relative;
     overflow: hidden;
