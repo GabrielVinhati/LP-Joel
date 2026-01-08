@@ -230,6 +230,8 @@ h1 {
     white-space: nowrap;       /* Impede que o texto quebre linha */
     will-change: transform;    /* Otimiza a performance da animação */
     animation: scrollText 20s linear infinite; /* Animação infinita */
+    width: max-content;
+
 }
 
 /* Estilo do texto */
@@ -244,22 +246,16 @@ h1 {
 
 /* O Keyframe que faz a mágica acontecer */
 @keyframes scrollText {
-    0% {
+    from {
         transform: translateX(0);
     }
-    100% {
-        transform: translateX(-50%); /* Move metade do caminho e reinicia */
+    to {
+        transform: translateX(-50%);
     }
 }
+
   
-  @keyframes scroll-strip {
-    from {
-      transform: translateX(0);
-    }
-    to {
-      transform: translateX(-50%);
-    }
-  }
+
   
 .cta-button:hover {
     transform: scale(1.05);
@@ -437,10 +433,10 @@ h1 {
     bottom: 35px; /* Ajuste para alinhar com o "buraco" da curva */
     left: 50%;
     transform: translateX(-50%);
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    border: 2px solid rgba(255, 255, 255, 0.3);
+    width: 48px;
+    height: 72px;
+    border-radius: 999px;
+    border: 2px solid #fff;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -449,7 +445,7 @@ h1 {
     z-index: 30;
 }
 .scroll-down-btn:hover { border-color: #fff; }
-.scroll-down-btn svg { width: 24px; height: 24px; stroke: white; stroke-width: 2; fill: none; }
+.scroll-down-btn svg { width: 30px; height: 30px; stroke: #FF605A; stroke-width: 2; fill: none; }
 
 /* --- RESPONSIVIDADE --- */
 @media (max-width: 992px) {
@@ -1599,12 +1595,14 @@ h1 {
     }
 }
 /* --- CSS ESPECÍFICO PARA A SEÇÃO FAQ --- */
+
 #faq-rocket {
     position: relative;
     width: 100%;
     /* O fundo na imagem é um azul mais vibrante que as seções anteriores */
     background: linear-gradient(180deg,#1c1cff 50%, #100B2E 0%, #1c1cff 50%, #100B2E 100%);
-    padding: 100px 5%;
+    padding: 1px 5%;
+    margin-bottom: 50px;
     overflow: hidden;
     color: #fff;
 }
